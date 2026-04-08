@@ -1,0 +1,895 @@
+
+========================================================================
+  USE CASE 1 · Cemig Concession Cliff — Full Credit Stress Chain
+========================================================================
+
+Found 12 Cemig-related nodes in the graph:
+
+  [ 8 edges]  Cemig (CMIG3/CMIG4)
+             ↳ source: raw/INDICE_CREDITO.md
+  [ 6 edges]  Cemig Concessões e Contratos
+             ↳ source: raw/empresas/cemig/concessoes_contratos.md
+  [ 6 edges]  Cemig Cliff de Concessões Hidrelétricas 2027-2030
+             ↳ source: raw/empresas/cemig/perfil_credito.md
+  [ 5 edges]  Concessões Hidrelétricas Cemig (Cliff 2027-2030)
+             ↳ source: raw/politicas/riscos_politicos_regulatorios_2026.md
+  [ 5 edges]  Cemig Perfil de Crédito
+             ↳ source: raw/empresas/cemig/perfil_credito.md
+  [ 3 edges]  Equatorial Participação ~15% na Cemig
+             ↳ source: raw/empresas/equatorial/concessoes_contratos.md
+  [ 2 edges]  Cemig-D DEA Score e Problema de OPEX
+             ↳ source: raw/empresas/cemig/perfil_credito.md
+  [ 2 edges]  Cemig Estrutura de Dívida e Covenants
+             ↳ source: raw/empresas/cemig/perfil_credito.md
+  [ 1 edges]  Estado de Minas Gerais (controlador Cemig)
+             ↳ source: raw/INDICE_CREDITO.md
+  [ 1 edges]  Rationale: Evento Binário Concessões Hidro Cemig como Risco Crítico
+             ↳ source: raw/empresas/cemig/concessoes_contratos.md
+  [ 1 edges]  Cemig Risco de Governança — Controle Estatal MG
+             ↳ source: raw/empresas/cemig/perfil_credito.md
+  [ 0 edges]  Cemig
+             ↳ source: raw/empresas/README.md
+
+── Concession-related nodes connected to Cemig ─────────────────
+
+  PCH e UHE (Hidrelétricas) (raw/tecnologia/README.md)
+    degree=0, community=13
+
+  Privatizações e Concessões (raw/politicas/README.md)
+    degree=1, community=12
+    → [INFERRED] conceptually_related_to        → Eletrobras
+
+  Energisa Concessões e Contratos (raw/empresas/energisa/concessoes_contratos.md)
+    degree=4, community=0
+    → [EXTRACTED] references                     → Energisa Perfil de Crédito
+    → [EXTRACTED] references                     → Energisa (ENGI11)
+    → [EXTRACTED] references                     → ANEEL (Agência Nacional de Energia Elétrica)
+    → [EXTRACTED] references                     → BNDES
+
+  CPFL Energia Concessões e Contratos (raw/empresas/cpfl/concessoes_contratos.md)
+    degree=3, community=0
+    → [EXTRACTED] references                     → CPFL Energia Perfil de Crédito
+    → [EXTRACTED] references                     → CPFL Energia (CPFL3)
+    → [EXTRACTED] references                     → BNDES
+
+  Neoenergia Concessões e Contratos (raw/empresas/neoenergia/concessoes_contratos.md)
+    degree=4, community=2
+    → [EXTRACTED] references                     → Neoenergia Perfil de Crédito
+    → [EXTRACTED] references                     → Neoenergia (NEOE3)
+    → [EXTRACTED] references                     → Eólica Offshore
+    → [INFERRED] references                     → BNDES
+
+  Copel Concessões e Contratos (raw/empresas/copel/concessoes_contratos.md)
+    degree=3, community=0
+    → [EXTRACTED] references                     → Copel Perfil de Crédito
+    → [EXTRACTED] references                     → Copel (CPLE3/CPLE6)
+    → [EXTRACTED] references                     → Copel Telecom (Ativo de Fibra Ótica)
+
+  Cemig Concessões e Contratos (raw/empresas/cemig/concessoes_contratos.md)
+    degree=6, community=0
+    → [EXTRACTED] references                     → Cemig (CMIG3/CMIG4)
+    → [EXTRACTED] references                     → Concessões Hidrelétricas Cemig (Cliff 2027-2030)
+    → [EXTRACTED] references                     → Emborcação (Usina Hidrelétrica — Re-leilão)
+    → [EXTRACTED] references                     → MME (Ministério de Minas e Energia)
+    → [EXTRACTED] references                     → Covenant Financeiro (DL/EBITDA / DSCR)
+    → [EXTRACTED] references                     → BNDES
+
+  Concessões Hidrelétricas Cemig (Cliff 2027-2030) (raw/politicas/riscos_politicos_regulatorios_2026.md)
+    degree=5, community=0
+    → [EXTRACTED] references                     → Riscos Políticos e Regulatórios 2026
+    → [EXTRACTED] references                     → Cemig Concessões e Contratos
+    → [EXTRACTED] references                     → MME (Ministério de Minas e Energia)
+    → [EXTRACTED] rationale_for                  → Rationale: Evento Binário Concessões Hidro Cemig como Risco Crítico
+    → [EXTRACTED] references                     → Emborcação (Usina Hidrelétrica — Re-leilão)
+
+  Emborcação (Usina Hidrelétrica — Re-leilão) (raw/politicas/riscos_politicos_regulatorios_2026.md)
+    degree=3, community=0
+    → [EXTRACTED] references                     → Riscos Políticos e Regulatórios 2026
+    → [EXTRACTED] references                     → Cemig Concessões e Contratos
+    → [EXTRACTED] references                     → Concessões Hidrelétricas Cemig (Cliff 2027-2030)
+
+  Rationale: Evento Binário Concessões Hidro Cemig como Risco Crítico (raw/empresas/cemig/concessoes_contratos.md)
+    degree=1, community=0
+    → [EXTRACTED] rationale_for                  → Concessões Hidrelétricas Cemig (Cliff 2027-2030)
+
+  Cemig Cliff de Concessões Hidrelétricas 2027-2030 (raw/empresas/cemig/perfil_credito.md)
+    degree=6, community=4
+    → [EXTRACTED] references                     → Cemig Perfil de Crédito
+    → [EXTRACTED] rationale_for                  → Rationale: Cliff de Concessões Leva a Covenant Breach Potencial
+    → [EXTRACTED] conceptually_related_to        → Cemig Estrutura de Dívida e Covenants
+    → [EXTRACTED] conceptually_related_to        → Equatorial Participação ~15% na Cemig
+    → [EXTRACTED] references                     → ANEEL Renovação vs Re-leilão — Dilema 2028-2032
+    → [INFERRED] conceptually_related_to        → ONS Cenários de Estresse para Crédito
+
+  Eletrobras Concessões e Contratos (raw/empresas/eletrobras/concessoes_contratos.md)
+    degree=4, community=9
+    → [EXTRACTED] references                     → Eletrobras Perfil de Crédito
+    → [EXTRACTED] references                     → Eletrobras Compulsório e Obrigações da Privatização
+    → [EXTRACTED] references                     → Eletrobras RGR — Reserva Global de Reversão
+    → [EXTRACTED] references                     → ANEEL Renovação vs Re-leilão — Dilema 2028-2032
+
+  Equatorial Concessões e Contratos (raw/empresas/equatorial/concessoes_contratos.md)
+    degree=4, community=4
+    → [EXTRACTED] references                     → Equatorial Energia Perfil de Crédito
+    → [EXTRACTED] references                     → Equatorial CEMAR — Vencimento de Concessão 2030
+    → [EXTRACTED] references                     → Equatorial Transmissão — Portfólio de Lotes
+    → [EXTRACTED] references                     → Equatorial Participação ~15% na Cemig
+
+  Equatorial CEMAR — Vencimento de Concessão 2030 (raw/empresas/equatorial/concessoes_contratos.md)
+    degree=2, community=4
+    → [EXTRACTED] references                     → Equatorial Concessões e Contratos
+    → [INFERRED] conceptually_related_to        → ANEEL Renovação vs Re-leilão — Dilema 2028-2032
+
+  ANEEL Concessões de Distribuição — Framework e Riscos (raw/regulacao/aneel_concessoes_distribuicao.md)
+    degree=4, community=4
+    → [EXTRACTED] references                     → ANEEL Renovação vs Re-leilão — Dilema 2028-2032
+    → [EXTRACTED] references                     → ANEEL Cláusula de Mudança de Controle
+    → [EXTRACTED] references                     → ANEEL Caducidade — Risco Extremo de Concessão
+    → [EXTRACTED] references                     → ANEEL Fundo de Garantia e Reversão
+
+  ANEEL Renovação vs Re-leilão — Dilema 2028-2032 (raw/regulacao/aneel_concessoes_distribuicao.md)
+    degree=4, community=4
+    → [EXTRACTED] references                     → Cemig Cliff de Concessões Hidrelétricas 2027-2030
+    → [EXTRACTED] references                     → Eletrobras Concessões e Contratos
+    → [INFERRED] conceptually_related_to        → Equatorial CEMAR — Vencimento de Concessão 2030
+    → [EXTRACTED] references                     → ANEEL Concessões de Distribuição — Framework e Riscos
+
+  ANEEL Caducidade — Risco Extremo de Concessão (raw/regulacao/aneel_concessoes_distribuicao.md)
+    degree=2, community=4
+    → [EXTRACTED] conceptually_related_to        → Equatorial Modelo de Turnaround Operacional
+    → [EXTRACTED] references                     → ANEEL Concessões de Distribuição — Framework e Riscos
+
+  Rationale: Cliff de Concessões Leva a Covenant Breach Potencial (raw/empresas/cemig/perfil_credito.md)
+    degree=1, community=4
+    → [EXTRACTED] rationale_for                  → Cemig Cliff de Concessões Hidrelétricas 2027-2030
+
+── Debt covenant and DSCR nodes connected to Cemig ─────────────
+
+  DEA Score (Eficiência Operacional Regulatória)
+    community=0, source=raw/INDICE_CREDITO.md
+    → [EXTRACTED] references                → Índice de Crédito BTG Utilities
+    → [EXTRACTED] references                → Energisa Perfil de Crédito
+
+  DSCR (Debt Service Coverage Ratio)
+    community=10, source=raw/INDICE_CREDITO.md
+    → [EXTRACTED] references                → Economia das Energias Renováveis
+    → [INFERRED] conceptually_related_to   → Covenant Financeiro (DL/EBITDA / DSCR)
+
+  Covenant Financeiro (DL/EBITDA / DSCR)
+    community=0, source=raw/INDICE_CREDITO.md
+    → [EXTRACTED] references                → Cemig Concessões e Contratos
+    → [INFERRED] conceptually_related_to   → DL/EBITDA (Alavancagem Financeira)
+    → [INFERRED] conceptually_related_to   → DSCR (Debt Service Coverage Ratio)
+
+  Rationale: ROI de AMI Justifica CAPEX e Melhora Covenants
+    community=2, source=raw/tecnologia/transformacao_digital_distribuidoras.md
+    → [EXTRACTED] rationale_for             → AMI (Advanced Metering Infrastructure)
+
+  Cemig-D DEA Score e Problema de OPEX
+    community=4, source=raw/empresas/cemig/perfil_credito.md
+    → [EXTRACTED] references                → Cemig Perfil de Crédito
+    → [INFERRED] semantically_similar_to   → ANEEL DEA — Análise Envoltória de Dados Eficiência Operacional
+
+  Cemig Estrutura de Dívida e Covenants
+    community=4, source=raw/empresas/cemig/perfil_credito.md
+    → [EXTRACTED] references                → Cemig Perfil de Crédito
+    → [EXTRACTED] conceptually_related_to   → Cemig Cliff de Concessões Hidrelétricas 2027-2030
+
+  ANEEL DEA — Análise Envoltória de Dados Eficiência Operacional
+    community=1, source=raw/regulacao/aneel_tarifas_rtp.md
+    → [INFERRED] semantically_similar_to   → Cemig-D DEA Score e Problema de OPEX
+    → [EXTRACTED] references                → ANEEL Revisões Tarifárias e Metodologia de Precificação
+
+  Rationale: Cliff de Concessões Leva a Covenant Breach Potencial
+    community=4, source=raw/empresas/cemig/perfil_credito.md
+    → [EXTRACTED] rationale_for             → Cemig Cliff de Concessões Hidrelétricas 2027-2030
+
+── ANEEL concession framework nodes (renewal risk) ─────────────
+
+  Emborcação (Usina Hidrelétrica — Re-leilão) (C0) ← raw/politicas/riscos_politicos_regulatorios_2026.md
+    → [EXTRACTED] Riscos Políticos e Regulatórios 2026
+    → [EXTRACTED] Cemig Concessões e Contratos
+    → [EXTRACTED] Concessões Hidrelétricas Cemig (Cliff 2027-2030)
+
+  ANEEL Concessões de Distribuição — Framework e Riscos (C4) ← raw/regulacao/aneel_concessoes_distribuicao.md
+    → [EXTRACTED] ANEEL Renovação vs Re-leilão — Dilema 2028-2032
+    → [EXTRACTED] ANEEL Cláusula de Mudança de Controle
+    → [EXTRACTED] ANEEL Caducidade — Risco Extremo de Concessão
+    → [EXTRACTED] ANEEL Fundo de Garantia e Reversão
+
+  ANEEL Renovação vs Re-leilão — Dilema 2028-2032 (C4) ← raw/regulacao/aneel_concessoes_distribuicao.md
+    → [EXTRACTED] Cemig Cliff de Concessões Hidrelétricas 2027-2030
+    → [EXTRACTED] Eletrobras Concessões e Contratos
+    → [INFERRED] Equatorial CEMAR — Vencimento de Concessão 2030
+    → [EXTRACTED] ANEEL Concessões de Distribuição — Framework e Riscos
+
+  ANEEL Caducidade — Risco Extremo de Concessão (C4) ← raw/regulacao/aneel_concessoes_distribuicao.md
+    → [EXTRACTED] Equatorial Modelo de Turnaround Operacional
+    → [EXTRACTED] ANEEL Concessões de Distribuição — Framework e Riscos
+
+── Hyperedges involving Cemig or concession risk ───────────────
+
+  HYPEREDGE: Distribuidoras sob Revisão Tarifária ANEEL (WACC + DEA + RAB)
+    confidence=EXTRACTED (0.95)
+    nodes: entity_aneel, concept_rtp, concept_wacc, concept_dea, concept_rab, entity_equatorial, entity_energisa, entity_cpfl, entity_neoenergia, entity_cemig, entity_copel
+
+  HYPEREDGE: RTP — WACC, RAB e DEA determinam EBITDA Regulatório das Distribuidoras
+    confidence=EXTRACTED (0.92)
+    nodes: aneel_wacc_regulatorio, aneel_rab, aneel_dea_eficiencia, aneel_calendario_rtps
+
+── Cross-document bridge: ONS Stress → Cemig Cliff (the key INFERRED link) 
+
+  FOUND DIRECT EDGE:
+  ONS Cenários de Estresse para Crédito --[conceptually_related_to]--> Cemig Cliff de Concessões Hidrelétricas 2027-2030
+  confidence=INFERRED, score=0.7
+  source: raw/regulacao/ons_risco_hidrologico.md → ?
+
+  2-HOP CONNECTION via shared neighbors:
+  ONS Cenários de Estresse para Crédito
+    ↕ (through)
+    · Cemig Cliff de Concessões Hidrelétricas 2027-2030
+    ↕
+  Rationale: Cliff de Concessões Leva a Covenant Breach Potencial
+
+========================================================================
+  USE CASE 2 · ACL 2028 Full Opening — Portfolio Revenue Stress Matrix
+========================================================================
+
+Found 13 ACL/market-opening nodes:
+
+  [ 4 edges]  Migração ACL — Impacto nas Distribuidoras
+             ↳ raw/mercado/migracao_acl_impacto_distribuidoras.md
+  [ 3 edges]  Abertura Total do Mercado Livre ACL 2028
+             ↳ raw/politicas/riscos_politicos_regulatorios_2026.md
+  [ 3 edges]  ACL Mecanismo de Compensação Regulatória ANEEL CP 038/2025
+             ↳ raw/mercado/migracao_acl_impacto_distribuidoras.md
+  [ 2 edges]  Ambiente de Contratação Livre (ACL)
+             ↳ raw/mercado/README.md
+  [ 2 edges]  ACL (Ambiente de Contratação Livre — Mercado Livre)
+             ↳ raw/INDICE_CREDITO.md
+  [ 2 edges]  CPFL Comercialização (ACL)
+             ↳ raw/empresas/cpfl/perfil_credito.md
+  [ 2 edges]  Migração para Mercado Livre ACL — Cronograma e Impacto
+             ↳ raw/mercado/dinamicas_mercado.md
+  [ 2 edges]  ACL Mecanismo de Receita das Distribuidoras
+             ↳ raw/mercado/migracao_acl_impacto_distribuidoras.md
+  [ 2 edges]  CCEE Estrutura ACR e ACL — Ambientes de Contratação
+             ↳ raw/regulacao/ccee_regras_comercializacao.md
+  [ 1 edges]  Mercado Livre (Consumidores Livres)
+             ↳ raw/mercado/README.md
+  [ 1 edges]  Equatorial ACL Migration Revenue-at-Risk
+             ↳ raw/empresas/equatorial/perfil_credito.md
+  [ 1 edges]  Estratégias das Distribuidoras para Mitigar Perda ACL
+             ↳ raw/mercado/migracao_acl_impacto_distribuidoras.md
+  [ 1 edges]  Rationale: Distribuidoras Retêm TUSD mas Perdem Margem de Comercialização ACL
+             ↳ raw/mercado/migracao_acl_impacto_distribuidoras.md
+
+── ACL migration mechanism nodes and their connections ─────────
+
+  Migração para Mercado Livre ACL — Cronograma e Impacto (C1)
+    → [EXTRACTED] references                     → Dinâmicas do Mercado de Energia Elétrica Brasil
+    → [INFERRED] semantically_similar_to        → Migração ACL — Impacto nas Distribuidoras
+
+  Migração ACL — Impacto nas Distribuidoras (C1)
+    → [INFERRED] semantically_similar_to        → Migração para Mercado Livre ACL — Cronograma e Impacto
+    → [EXTRACTED] references                     → ACL Mecanismo de Receita das Distribuidoras
+    → [EXTRACTED] references                     → ACL Mecanismo de Compensação Regulatória ANEEL CP 038/2025
+    → [EXTRACTED] references                     → Estratégias das Distribuidoras para Mitigar Perda ACL
+
+  ACL Mecanismo de Receita das Distribuidoras (C1)
+    → [EXTRACTED] references                     → Migração ACL — Impacto nas Distribuidoras
+    → [EXTRACTED] rationale_for                  → Rationale: Distribuidoras Retêm TUSD mas Perdem Margem de Comercialização ACL
+
+  ACL Mecanismo de Compensação Regulatória ANEEL CP 038/2025 (C1)
+    → [EXTRACTED] references                     → Migração ACL — Impacto nas Distribuidoras
+    → [EXTRACTED] references                     → ANEEL Framework Regulatório
+    → [INFERRED] conceptually_related_to        → ANEEL Parcela A e Parcela B — Estrutura da Receita Permitida
+
+  Estratégias das Distribuidoras para Mitigar Perda ACL (C1)
+    → [EXTRACTED] references                     → Migração ACL — Impacto nas Distribuidoras
+
+── Companies connected to ACL risk (cross-document join) ───────
+
+  CPFL Energia → (no direct ACL edge — check 2-hop)
+
+  Equatorial Energia → (no direct ACL edge — check 2-hop)
+
+  Energisa → (no direct ACL edge — check 2-hop)
+
+  Neoenergia → (no direct ACL edge — check 2-hop)
+
+  Copel → (no direct ACL edge — check 2-hop)
+
+  Energisa Concessões e Contratos → (no direct ACL edge — check 2-hop)
+
+  Energisa Perfil de Crédito → (no direct ACL edge — check 2-hop)
+
+  CPFL Energia Concessões e Contratos → (no direct ACL edge — check 2-hop)
+
+  CPFL Energia Perfil de Crédito → ACL exposure:
+    [EXTRACTED] CPFL Comercialização (ACL)
+    [EXTRACTED] Abertura Total do Mercado Livre ACL 2028
+
+  Neoenergia Concessões e Contratos → (no direct ACL edge — check 2-hop)
+
+  Neoenergia Perfil de Crédito → (no direct ACL edge — check 2-hop)
+
+  Copel Concessões e Contratos → (no direct ACL edge — check 2-hop)
+
+  Copel Perfil de Crédito → ACL exposure:
+    [EXTRACTED] Abertura Total do Mercado Livre ACL 2028
+
+  Equatorial Energia (EQTL3) → (no direct ACL edge — check 2-hop)
+
+  Energisa (ENGI11) → (no direct ACL edge — check 2-hop)
+
+  CPFL Energia (CPFL3) → ACL exposure:
+    [EXTRACTED] CPFL Comercialização (ACL)
+
+  Neoenergia (NEOE3) → (no direct ACL edge — check 2-hop)
+
+  Copel (CPLE3/CPLE6) → (no direct ACL edge — check 2-hop)
+
+  Estado do Paraná (controlador Copel) → (no direct ACL edge — check 2-hop)
+
+  Copel Telecom (Ativo de Fibra Ótica) → (no direct ACL edge — check 2-hop)
+
+  CPFL Comercialização (ACL) → (no direct ACL edge — check 2-hop)
+
+  Rationale: Suporte State Grid como Diferencial de Crédito CPFL → (no direct ACL edge — check 2-hop)
+
+  Rationale: Suporte Iberdrola como Diferencial de Crédito Neoenergia → (no direct ACL edge — check 2-hop)
+
+  Rationale: Baixo Leverage Copel como Headroom para Expansão → (no direct ACL edge — check 2-hop)
+
+  Equatorial Concessões e Contratos → (no direct ACL edge — check 2-hop)
+
+  Equatorial CEMAR — Vencimento de Concessão 2030 → (no direct ACL edge — check 2-hop)
+
+  Equatorial Transmissão — Portfólio de Lotes → (no direct ACL edge — check 2-hop)
+
+  Equatorial Participação ~15% na Cemig → (no direct ACL edge — check 2-hop)
+
+  Equatorial Energia Perfil de Crédito → ACL exposure:
+    [EXTRACTED] Equatorial ACL Migration Revenue-at-Risk
+
+  Equatorial Modelo de Turnaround Operacional → (no direct ACL edge — check 2-hop)
+
+  Equatorial CEEE-D (RS) — Risco de Integração → (no direct ACL edge — check 2-hop)
+
+  Equatorial ACL Migration Revenue-at-Risk → (no direct ACL edge — check 2-hop)
+
+── Hyperedge: ACL Migration cluster ────────────────────────────
+
+  HYPEREDGE: Abertura ACL — Migração, Perda de Receita e Estratégias de Mitigação
+    confidence=EXTRACTED score=0.9
+    source: raw/mercado/migracao_acl_impacto_distribuidoras.md
+    nodes: mercado_acl_migracao, acl_mecanismo_receita, acl_compensacao_regulatoria, acl_estrategias_distribuidoras
+
+── TUSD retention as offset mechanism ──────────────────────────
+
+  TUSD (Tarifa de Uso do Sistema de Distribuição) (C26)
+
+  ANEEL Encargos Setoriais — CDE, TUST, TUSD, ESS, EER (C1)
+    → [INFERRED] CCEE Encargos Setoriais — CDE, ESS, EER
+    → [EXTRACTED] ANEEL Framework Regulatório
+
+  Rationale: Distribuidoras Retêm TUSD mas Perdem Margem de Comercialização ACL (C1)
+    → [EXTRACTED] ACL Mecanismo de Receita das Distribuidoras
+
+── BTG Credit Index — which companies are in it ────────────────
+
+  Índice de Crédito BTG Utilities — degree=22
+    → [EXTRACTED] references                → Equatorial Energia (EQTL3)
+    → [EXTRACTED] references                → Energisa (ENGI11)
+    → [EXTRACTED] references                → CPFL Energia (CPFL3)
+    → [EXTRACTED] references                → Neoenergia (NEOE3)
+    → [EXTRACTED] references                → Cemig (CMIG3/CMIG4)
+    → [EXTRACTED] references                → Copel (CPLE3/CPLE6)
+    → [EXTRACTED] references                → Eletrobras (ELET3/ELET6/EBR)
+    → [EXTRACTED] references                → ANEEL (Agência Nacional de Energia Elétrica)
+    → [EXTRACTED] references                → MME (Ministério de Minas e Energia)
+    → [EXTRACTED] references                → CCEE (Câmara de Comercialização de Energia Elétrica)
+    → [EXTRACTED] references                → BNDES
+    → [EXTRACTED] references                → RTP (Revisão Tarifária Periódica)
+    → [EXTRACTED] references                → WACC Regulatório ANEEL
+    → [EXTRACTED] references                → DEA Score (Eficiência Operacional Regulatória)
+    → [EXTRACTED] references                → CVA (Conta de Variação de Valores de Itens da Parcela A)
+    → [EXTRACTED] references                → GSF (Generation Scaling Factor)
+    → [EXTRACTED] references                → PLD (Preço de Liquidação das Diferenças)
+    → [EXTRACTED] references                → ACR (Ambiente de Contratação Regulada)
+    → [EXTRACTED] references                → ACL (Ambiente de Contratação Livre — Mercado Livre)
+    → [EXTRACTED] references                → MRR (Mecanismo de Realocação de Risco Hidrológico)
+    → [EXTRACTED] references                → RAP (Receita Anual Permitida — Transmissão)
+    → [EXTRACTED] references                → Angra 3 (Eletronuclear — Risco CAPEX)
+
+========================================================================
+  USE CASE 3 · SBCE Carbon Compliance + ESG Financing Intersection
+========================================================================
+
+Found 6 SBCE/carbon nodes:
+
+  [11 edges]  SBCE Mercado Brasileiro de Carbono (C5)
+  [ 5 edges]  SBCE (Sistema Brasileiro de Comércio de Emissões) (C5)
+  [ 2 edges]  Lei 15.042/2024 (Marco Legal SBCE Carbono) (C5)
+  [ 2 edges]  Lei 15.042/2024 — SBCE Mercado Brasileiro de Carbono (C8)
+  [ 1 edges]  CBE (Cota Brasileira de Emissões) (C5)
+  [ 1 edges]  SINASE (Sistema Nacional de Créditos de Emissões) (C5)
+
+── SBCE → full connection map ──────────────────────────────────
+
+  SBCE Mercado Brasileiro de Carbono
+    → [EXTRACTED] references                     → SBCE (Sistema Brasileiro de Comércio de Emissões)
+       source: raw/politicas/carbon_market_sbce.md | target: ?
+    → [EXTRACTED] references                     → Lei 15.042/2024 (Marco Legal SBCE Carbono)
+       source: raw/politicas/carbon_market_sbce.md | target: ?
+    → [EXTRACTED] references                     → CBE (Cota Brasileira de Emissões)
+       source: raw/politicas/carbon_market_sbce.md | target: ?
+    → [EXTRACTED] references                     → SINASE (Sistema Nacional de Créditos de Emissões)
+       source: raw/politicas/carbon_market_sbce.md | target: ?
+    → [EXTRACTED] references                     → I-REC (Certificado Internacional de Energia Renovável)
+       source: raw/politicas/carbon_market_sbce.md | target: ?
+    → [EXTRACTED] references                     → Green Bond / Instrumento ESG Verde
+       source: raw/politicas/carbon_market_sbce.md | target: ?
+    → [EXTRACTED] references                     → SLB (Sustainability-Linked Bond)
+       source: raw/politicas/carbon_market_sbce.md | target: ?
+    → [EXTRACTED] references                     → Taxonomia Brasileira de Finanças Sustentáveis
+       source: raw/politicas/carbon_market_sbce.md | target: ?
+    → [EXTRACTED] references                     → MCTI (Ministério da Ciência e Tecnologia)
+       source: raw/politicas/carbon_market_sbce.md | target: ?
+    → [EXTRACTED] references                     → Neoenergia (NEOE3)
+       source: raw/politicas/carbon_market_sbce.md | target: ?
+    → [EXTRACTED] references                     → CPFL Energia (CPFL3)
+       source: raw/politicas/carbon_market_sbce.md | target: ?
+
+  SBCE (Sistema Brasileiro de Comércio de Emissões)
+    → [EXTRACTED] references                     → Políticas Energéticas Brasil
+       source: raw/politicas/politicas_energia.md | target: ?
+    → [EXTRACTED] references                     → SBCE Mercado Brasileiro de Carbono
+       source: raw/politicas/carbon_market_sbce.md | target: ?
+    → [INFERRED] semantically_similar_to        → I-REC (Certificado Internacional de Energia Renovável)
+       source: raw/politicas/carbon_market_sbce.md | target: ?
+    → [INFERRED] conceptually_related_to        → NDC Brasil (Metas Climáticas Paris)
+       source: raw/politicas/politicas_energia.md | target: ?
+    → [EXTRACTED] conceptually_related_to        → Lei 15.042/2024 (Marco Legal SBCE Carbono)
+       source: raw/politicas/carbon_market_sbce.md | target: ?
+
+  Lei 15.042/2024 (Marco Legal SBCE Carbono)
+    → [EXTRACTED] references                     → SBCE Mercado Brasileiro de Carbono
+       source: raw/politicas/carbon_market_sbce.md | target: ?
+    → [EXTRACTED] conceptually_related_to        → SBCE (Sistema Brasileiro de Comércio de Emissões)
+       source: raw/politicas/carbon_market_sbce.md | target: ?
+
+  Lei 15.042/2024 — SBCE Mercado Brasileiro de Carbono
+    → [EXTRACTED] references                     → Marco Regulatório de Novas Tecnologias — Setor Elétrico
+       source: raw/regulacao/marco_regulatorio_novas_tecnologias.md | target: ?
+    → [INFERRED] conceptually_related_to        → RN 1.072/2026 — Regulamentação BESS
+       source: raw/regulacao/marco_regulatorio_novas_tecnologias.md | target: ?
+
+── ESG + Green Finance nodes ───────────────────────────────────
+
+  Green Bond / Instrumento ESG Verde (C5, degree=4)
+    → [EXTRACTED] references                     → SBCE Mercado Brasileiro de Carbono
+    → [EXTRACTED] references                     → Neoenergia Perfil de Crédito
+    → [INFERRED] semantically_similar_to        → Debentures Incentivadas (Lei 12.431)
+    → [INFERRED] semantically_similar_to        → SLB (Sustainability-Linked Bond)
+
+  Debentures Incentivadas (Lei 12.431) (C10, degree=3)
+    → [EXTRACTED] references                     → Economia das Energias Renováveis
+    → [EXTRACTED] rationale_for                  → Rationale: Debentures Incentivadas Reduzem Custo de Capital
+    → [INFERRED] semantically_similar_to        → Green Bond / Instrumento ESG Verde
+
+  NDC Brasil (Metas Climáticas Paris) (C5, degree=3)
+    → [EXTRACTED] references                     → Políticas Energéticas Brasil
+    → [INFERRED] conceptually_related_to        → SBCE (Sistema Brasileiro de Comércio de Emissões)
+    → [INFERRED] conceptually_related_to        → Plano Nacional de Energia 2050
+
+  I-REC (Certificado Internacional de Energia Renovável) (C5, degree=2)
+    → [EXTRACTED] references                     → SBCE Mercado Brasileiro de Carbono
+    → [INFERRED] semantically_similar_to        → SBCE (Sistema Brasileiro de Comércio de Emissões)
+
+  SLB (Sustainability-Linked Bond) (C5, degree=2)
+    → [EXTRACTED] references                     → SBCE Mercado Brasileiro de Carbono
+    → [INFERRED] semantically_similar_to        → Green Bond / Instrumento ESG Verde
+
+  NDC Brasil (Metas Climáticas) (C6, degree=1)
+    → [INFERRED] conceptually_related_to        → Descarbonização e Transição Energética
+
+  Rationale: Debentures Incentivadas Reduzem Custo de Capital (C10, degree=1)
+    → [EXTRACTED] rationale_for                  → Debentures Incentivadas (Lei 12.431)
+
+── KEY INFERRED EDGE: Green Bond ↔ Debentures Incentivadas (cross-document) 
+
+  *** INFERRED EDGE FOUND ***
+  Green Bond / Instrumento ESG Verde
+    --[semantically_similar_to]--> Debentures Incentivadas (Lei 12.431)
+  confidence=INFERRED, score=0.7
+  source: raw/tecnologia/economics_renovaveis.md
+  target: ?
+
+  INTERPRETATION: This connection does NOT appear in any single document.
+  The graph discovered it by semantic similarity across:
+  raw/politicas/carbon_market_sbce.md → raw/tecnologia/economics_renovaveis.md
+  CREDIT IMPLICATION: Companies with SBCE compliance cost can simultaneously
+  issue SBCE-linked green debentures, turning a liability into a financing advantage.
+
+── Hyperedge: Carbon Compliance cluster ────────────────────────
+
+  HYPEREDGE: Compliance de Carbono SBCE para Geração Termelétrica
+    confidence=EXTRACTED score=0.92
+    nodes: concept_sbce, concept_cbe, concept_sinase, entity_mcti, concept_lei_15042
+
+========================================================================
+  USE CASE 4 · GSF Hydrological Risk → PLD Spike → Generator Credit Deterioration
+========================================================================
+
+Found 10 GSF/hydro-risk nodes:
+
+  [ 7 edges]  ONS Risco Hidrológico — Impacto no Crédito de Geradoras (C3)
+             ↳ raw/regulacao/ons_risco_hidrologico.md
+  [ 4 edges]  CCEE GSF e MRR — Mecanismo de Repartição de Riscos (C3)
+             ↳ raw/regulacao/ccee_regras_comercializacao.md
+  [ 3 edges]  ONS MRR — Mecanismo de Repartição de Riscos Hidrológicos (C3)
+             ↳ raw/regulacao/ons_risco_hidrologico.md
+  [ 2 edges]  GSF (Generation Scaling Factor) (C0)
+             ↳ raw/INDICE_CREDITO.md
+  [ 2 edges]  Risco Hidrológico GSF/PLD (C0)
+             ↳ raw/politicas/riscos_politicos_regulatorios_2026.md
+  [ 2 edges]  Risco Hidrológico GSF — Generation Scaling Factor (C1)
+             ↳ raw/mercado/dinamicas_mercado.md
+  [ 2 edges]  ONS CMO — Custo Marginal de Operação (C3)
+             ↳ raw/regulacao/ons_risco_hidrologico.md
+  [ 2 edges]  ONS GSF — Generation Scaling Factor Detalhamento (C3)
+             ↳ raw/regulacao/ons_risco_hidrologico.md
+  [ 1 edges]  MRR (Mecanismo de Realocação de Risco Hidrológico) (C0)
+             ↳ raw/INDICE_CREDITO.md
+  [ 1 edges]  Rationale: Criação do MRR Pós-Crise Hídrica 2012-2015 (C3)
+             ↳ raw/regulacao/ons_risco_hidrologico.md
+
+── Full GSF risk transmission chain ────────────────────────────
+
+  GSF (Generation Scaling Factor)
+    → [EXTRACTED] references                     → Índice de Crédito BTG Utilities
+    → [INFERRED] semantically_similar_to        → Risco Hidrológico GSF/PLD
+
+  MRR (Mecanismo de Realocação de Risco Hidrológico)
+    → [EXTRACTED] references                     → Índice de Crédito BTG Utilities
+
+  Risco Hidrológico GSF/PLD
+    → [EXTRACTED] references                     → Riscos Políticos e Regulatórios 2026
+    → [INFERRED] semantically_similar_to        → GSF (Generation Scaling Factor)
+
+  Risco Hidrológico GSF — Generation Scaling Factor
+    → [EXTRACTED] references                     → Dinâmicas do Mercado de Energia Elétrica Brasil
+    → [INFERRED] semantically_similar_to        → CCEE GSF e MRR — Mecanismo de Repartição de Riscos
+
+  CCEE GSF e MRR — Mecanismo de Repartição de Riscos
+    → [INFERRED] semantically_similar_to        → Risco Hidrológico GSF — Generation Scaling Factor
+    → [EXTRACTED] references                     → CCEE Regras de Comercialização e Mecânica de Mercado
+    → [INFERRED] semantically_similar_to        → ONS GSF — Generation Scaling Factor Detalhamento
+    → [INFERRED] semantically_similar_to        → ONS MRR — Mecanismo de Repartição de Riscos Hidrológicos
+
+  ONS Risco Hidrológico — Impacto no Crédito de Geradoras
+    → [EXTRACTED] references                     → ONS Reservatórios — Nível e Sazonalidade
+    → [EXTRACTED] references                     → ONS CMO — Custo Marginal de Operação
+    → [EXTRACTED] references                     → ONS GSF — Generation Scaling Factor Detalhamento
+    → [EXTRACTED] references                     → ONS MRR — Mecanismo de Repartição de Riscos Hidrológicos
+    → [EXTRACTED] references                     → ONS CMSE — Curva de Aversão ao Risco
+    → [EXTRACTED] references                     → ONS Itaipu e Interconexões Internacionais
+    → [EXTRACTED] references                     → ONS Cenários de Estresse para Crédito
+
+  ONS CMO — Custo Marginal de Operação
+    → [INFERRED] conceptually_related_to        → CCEE PLD — Cálculo e Limites
+    → [EXTRACTED] references                     → ONS Risco Hidrológico — Impacto no Crédito de Geradoras
+
+  ONS GSF — Generation Scaling Factor Detalhamento
+    → [INFERRED] semantically_similar_to        → CCEE GSF e MRR — Mecanismo de Repartição de Riscos
+    → [EXTRACTED] references                     → ONS Risco Hidrológico — Impacto no Crédito de Geradoras
+
+  ONS MRR — Mecanismo de Repartição de Riscos Hidrológicos
+    → [INFERRED] semantically_similar_to        → CCEE GSF e MRR — Mecanismo de Repartição de Riscos
+    → [EXTRACTED] references                     → ONS Risco Hidrológico — Impacto no Crédito de Geradoras
+    → [EXTRACTED] rationale_for                  → Rationale: Criação do MRR Pós-Crise Hídrica 2012-2015
+
+  Rationale: Criação do MRR Pós-Crise Hídrica 2012-2015
+    → [EXTRACTED] rationale_for                  → ONS MRR — Mecanismo de Repartição de Riscos Hidrológicos
+
+── PLD calculation chain ───────────────────────────────────────
+
+  Preço de Liquidação das Diferenças (PLD) (C7, degree=1)
+    → [EXTRACTED] references                → CCEE (Câmara de Comercialização de Energia Elétrica)
+
+  PLD (Preço de Liquidação das Diferenças) (C0, degree=1)
+    → [EXTRACTED] references                → Índice de Crédito BTG Utilities
+
+  Risco Hidrológico GSF/PLD (C0, degree=2)
+    → [EXTRACTED] references                → Riscos Políticos e Regulatórios 2026
+    → [INFERRED] semantically_similar_to   → GSF (Generation Scaling Factor)
+
+  PLD — Histórico, Análise e Implicações para Crédito (C3, degree=3)
+    → [EXTRACTED] references                → PLD Análise de Volatilidade e Correlações
+    → [EXTRACTED] references                → PLD Drivers Estruturais 2026-2030
+    → [EXTRACTED] references                → PLD Basis Risk — Diferencial entre Subsistemas
+
+  PLD Análise de Volatilidade e Correlações (C3, degree=2)
+    → [EXTRACTED] references                → PLD — Histórico, Análise e Implicações para Crédito
+    → [INFERRED] conceptually_related_to   → PLD Drivers Estruturais 2026-2030
+
+  PLD Drivers Estruturais 2026-2030 (C3, degree=2)
+    → [EXTRACTED] references                → PLD — Histórico, Análise e Implicações para Crédito
+    → [INFERRED] conceptually_related_to   → PLD Análise de Volatilidade e Correlações
+
+  PLD Basis Risk — Diferencial entre Subsistemas (C3, degree=2)
+    → [EXTRACTED] references                → PLD — Histórico, Análise e Implicações para Crédito
+    → [INFERRED] conceptually_related_to   → ONS Reservatórios — Nível e Sazonalidade
+
+  CCEE PLD — Cálculo e Limites (C3, degree=2)
+    → [EXTRACTED] references                → CCEE Regras de Comercialização e Mecânica de Mercado
+    → [INFERRED] conceptually_related_to   → ONS CMO — Custo Marginal de Operação
+
+── KEY INFERRED EDGE: GSF → CCEE settlement (cross-document bridge) 
+
+  No direct edge. Shared neighbors (Risco Hidrológico GSF/PLD ↔ CCEE GSF e MRR — Mecanismo de Repartição de Riscos):
+
+  *** INFERRED EDGE FOUND ***
+  Risco Hidrológico GSF — Generation Scaling Factor --[semantically_similar_to]--> CCEE GSF e MRR — Mecanismo de Repartição de Riscos
+  confidence=INFERRED, score=0.88
+  source: raw/mercado/dinamicas_mercado.md → ?
+
+── Company exposure to GSF (2-hop from hydro risk) ─────────────
+
+── Hyperedge: Hydro Risk cluster ───────────────────────────────
+
+  HYPEREDGE: Risco Hidrológico — GSF, CMO, PLD e Impacto nas Geradoras
+    confidence=INFERRED score=0.88
+    nodes: ons_gsf_detalhamento, ons_cmo_conceito, ccee_pld_calculo, ons_mrr_mecanismo
+
+========================================================================
+  USE CASE 5 · Smart Grid Technology Mandates → Concession Renewal Readiness
+========================================================================
+
+Found 10 technology/digitalization nodes:
+
+  [10 edges]  Transformação Digital das Distribuidoras (C2)
+             ↳ raw/tecnologia/transformacao_digital_distribuidoras.md
+  [ 6 edges]  AMI (Advanced Metering Infrastructure) (C2)
+             ↳ raw/tecnologia/transformacao_digital_distribuidoras.md
+  [ 3 edges]  PNT (Perdas Não Técnicas de Energia) (C2)
+             ↳ raw/INDICE_CREDITO.md
+  [ 3 edges]  Smart Grid / Redes Inteligentes (C2)
+             ↳ raw/tecnologia/tendencias_tech.md
+  [ 3 edges]  Resposta à Demanda (Demand Response) (C2)
+             ↳ raw/tecnologia/transformacao_digital_distribuidoras.md
+  [ 2 edges]  Redes Inteligentes (Smart Grids) (C6)
+             ↳ raw/tecnologia/README.md
+  [ 2 edges]  DEC/FEC (Indicadores de Continuidade de Energia) (C2)
+             ↳ raw/INDICE_CREDITO.md
+  [ 2 edges]  ANEEL DEC/FEC — Indicadores de Qualidade e Penalidades (C1)
+             ↳ raw/regulacao/aneel_tarifas_rtp.md
+  [ 1 edges]  Medição Inteligente (AMI/AMR) (C6)
+             ↳ raw/tecnologia/README.md
+  [ 1 edges]  Rationale: ROI de AMI Justifica CAPEX e Melhora Covenants (C2)
+             ↳ raw/tecnologia/transformacao_digital_distribuidoras.md
+
+── Technology → Regulatory connection chain ────────────────────
+
+  Redes Inteligentes (Smart Grids)
+    → [INFERRED] conceptually_related_to        → Medição Inteligente (AMI/AMR)
+    → [INFERRED] conceptually_related_to        → Armazenamento de Energia (BESS)
+
+  Transformação Digital das Distribuidoras
+    → [EXTRACTED] references                     → AMI (Advanced Metering Infrastructure)
+    → [EXTRACTED] references                     → SCADA (Supervisory Control and Data Acquisition)
+    → [EXTRACTED] references                     → Resposta à Demanda (Demand Response)
+    → [EXTRACTED] references                     → Geração Distribuída Solar
+    → [EXTRACTED] references                     → V2G (Vehicle-to-Grid)
+    → [EXTRACTED] references                     → PRODIST (Procedimentos de Distribuição ANEEL)
+    → [EXTRACTED] references                     → ANEEL (Agência Nacional de Energia Elétrica)
+    → [EXTRACTED] references                     → PNT (Perdas Não Técnicas de Energia)
+    → [EXTRACTED] references                     → DEC/FEC (Indicadores de Continuidade de Energia)
+    → [EXTRACTED] references                     → RAB (Regulatory Asset Base)
+
+  PNT (Perdas Não Técnicas de Energia)
+    → [EXTRACTED] references                     → Transformação Digital das Distribuidoras
+    → [EXTRACTED] references                     → Neoenergia Perfil de Crédito
+    → [INFERRED] conceptually_related_to        → DEC/FEC (Indicadores de Continuidade de Energia)
+
+  DEC/FEC (Indicadores de Continuidade de Energia)
+    → [EXTRACTED] references                     → Transformação Digital das Distribuidoras
+    → [INFERRED] conceptually_related_to        → PNT (Perdas Não Técnicas de Energia)
+
+  AMI (Advanced Metering Infrastructure)
+    → [EXTRACTED] references                     → Transformação Digital das Distribuidoras
+    → [EXTRACTED] references                     → Tendências Tecnológicas Setor Elétrico Brasileiro
+    → [EXTRACTED] references                     → Neoenergia Perfil de Crédito
+    → [EXTRACTED] references                     → Copel Perfil de Crédito
+    → [EXTRACTED] rationale_for                  → Rationale: ROI de AMI Justifica CAPEX e Melhora Covenants
+    → [INFERRED] semantically_similar_to        → Smart Grid / Redes Inteligentes
+
+  Smart Grid / Redes Inteligentes
+    → [EXTRACTED] references                     → Tendências Tecnológicas Setor Elétrico Brasileiro
+    → [INFERRED] semantically_similar_to        → AMI (Advanced Metering Infrastructure)
+    → [INFERRED] semantically_similar_to        → SCADA (Supervisory Control and Data Acquisition)
+
+  Resposta à Demanda (Demand Response)
+    → [EXTRACTED] references                     → Transformação Digital das Distribuidoras
+    → [EXTRACTED] references                     → Políticas Energéticas Brasil
+    → [INFERRED] semantically_similar_to        → V2G (Vehicle-to-Grid)
+
+  ANEEL DEC/FEC — Indicadores de Qualidade e Penalidades
+    → [INFERRED] conceptually_related_to        → Equatorial Modelo de Turnaround Operacional
+    → [EXTRACTED] references                     → ANEEL Revisões Tarifárias e Metodologia de Precificação
+
+── ANEEL concession renewal conditions (cross-reference to tech mandates) 
+
+  Procedimentos de Distribuição (PRODIST) (C7)
+    → [EXTRACTED] ANEEL (Agência Nacional de Energia Elétrica)
+
+  Emborcação (Usina Hidrelétrica — Re-leilão) (C0)
+    → [EXTRACTED] Riscos Políticos e Regulatórios 2026
+    → [EXTRACTED] Cemig Concessões e Contratos
+    → [EXTRACTED] Concessões Hidrelétricas Cemig (Cliff 2027-2030)
+
+  PRODIST (Procedimentos de Distribuição ANEEL) (C2)
+    → [EXTRACTED] Transformação Digital das Distribuidoras *** TECH LINK ***
+
+  ANEEL Concessões de Distribuição — Framework e Riscos (C4)
+    → [EXTRACTED] ANEEL Renovação vs Re-leilão — Dilema 2028-2032
+    → [EXTRACTED] ANEEL Cláusula de Mudança de Controle
+    → [EXTRACTED] ANEEL Caducidade — Risco Extremo de Concessão
+    → [EXTRACTED] ANEEL Fundo de Garantia e Reversão
+
+  ANEEL Renovação vs Re-leilão — Dilema 2028-2032 (C4)
+    → [EXTRACTED] Cemig Cliff de Concessões Hidrelétricas 2027-2030
+    → [EXTRACTED] Eletrobras Concessões e Contratos
+    → [INFERRED] Equatorial CEMAR — Vencimento de Concessão 2030
+    → [EXTRACTED] ANEEL Concessões de Distribuição — Framework e Riscos
+
+  ANEEL Caducidade — Risco Extremo de Concessão (C4)
+    → [EXTRACTED] Equatorial Modelo de Turnaround Operacional
+    → [EXTRACTED] ANEEL Concessões de Distribuição — Framework e Riscos
+
+── Company digitalization readiness (from graph connections) ───
+
+  CPFL Energia (degree=0)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  Equatorial Energia (degree=0)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  Energisa (degree=0)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  Neoenergia (degree=0)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  Copel (degree=0)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  Energisa Concessões e Contratos (degree=4)
+    (No direct tech/renewal edges — checking 2-hop...)
+    2-hop via: ANEEL (Agência Nacional de Energia Elétrica)
+
+  Energisa Perfil de Crédito (degree=5)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  CPFL Energia Concessões e Contratos (degree=3)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  CPFL Energia Perfil de Crédito (degree=6)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  Neoenergia Concessões e Contratos (degree=4)
+    (No direct tech/renewal edges — checking 2-hop...)
+    2-hop via: Neoenergia Perfil de Crédito
+
+  Neoenergia Perfil de Crédito (degree=7)
+    Tech connections:
+      [EXTRACTED] PNT (Perdas Não Técnicas de Energia)
+      [EXTRACTED] AMI (Advanced Metering Infrastructure)
+
+  Copel Concessões e Contratos (degree=3)
+    (No direct tech/renewal edges — checking 2-hop...)
+    2-hop via: Copel Perfil de Crédito
+
+  Copel Perfil de Crédito (degree=6)
+    Tech connections:
+      [EXTRACTED] AMI (Advanced Metering Infrastructure)
+
+  Equatorial Energia (EQTL3) (degree=6)
+    (No direct tech/renewal edges — checking 2-hop...)
+    2-hop via: Políticas Energéticas Brasil
+
+  Energisa (ENGI11) (degree=5)
+    (No direct tech/renewal edges — checking 2-hop...)
+    2-hop via: ANEEL (Agência Nacional de Energia Elétrica)
+
+  CPFL Energia (CPFL3) (degree=10)
+    (No direct tech/renewal edges — checking 2-hop...)
+    2-hop via: ANEEL (Agência Nacional de Energia Elétrica)
+
+  Neoenergia (NEOE3) (degree=9)
+    (No direct tech/renewal edges — checking 2-hop...)
+    2-hop via: Neoenergia Perfil de Crédito
+
+  Copel (CPLE3/CPLE6) (degree=8)
+    (No direct tech/renewal edges — checking 2-hop...)
+    2-hop via: Copel Perfil de Crédito
+
+  Estado do Paraná (controlador Copel) (degree=1)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  Copel Telecom (Ativo de Fibra Ótica) (degree=2)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  CPFL Comercialização (ACL) (degree=2)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  Rationale: Suporte State Grid como Diferencial de Crédito CPFL (degree=1)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  Rationale: Suporte Iberdrola como Diferencial de Crédito Neoenergia (degree=1)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  Rationale: Baixo Leverage Copel como Headroom para Expansão (degree=1)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  Cemig-D DEA Score e Problema de OPEX (degree=2)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  Equatorial Concessões e Contratos (degree=4)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  Equatorial CEMAR — Vencimento de Concessão 2030 (degree=2)
+    Concession renewal connections:
+      [INFERRED] ANEEL Renovação vs Re-leilão — Dilema 2028-2032
+
+  Equatorial Transmissão — Portfólio de Lotes (degree=1)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  Equatorial Participação ~15% na Cemig (degree=3)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  Equatorial Energia Perfil de Crédito (degree=4)
+    (No direct tech/renewal edges — checking 2-hop...)
+    2-hop via: Equatorial Modelo de Turnaround Operacional
+
+  Equatorial Modelo de Turnaround Operacional (degree=3)
+    Tech connections:
+      [INFERRED] ANEEL DEC/FEC — Indicadores de Qualidade e Penalidades
+    Concession renewal connections:
+      [EXTRACTED] ANEEL Caducidade — Risco Extremo de Concessão
+
+  Equatorial CEEE-D (RS) — Risco de Integração (degree=1)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+  Equatorial ACL Migration Revenue-at-Risk (degree=1)
+    (No direct tech/renewal edges — checking 2-hop...)
+
+── Hyperedge: Digital transformation cluster ───────────────────
+
+── Final cross-use-case summary: God nodes that bridge all 5 use cases 
+
+  [22 edges]  Índice de Crédito BTG Utilities
+    Communities bridged: [0, 2]
+    Source: raw/INDICE_CREDITO.md
+  [15 edges]  Riscos Políticos e Regulatórios 2026
+    Communities bridged: [0, 2]
+    Source: raw/politicas/riscos_politicos_regulatorios_2026.md
+  [11 edges]  Políticas Energéticas Brasil
+    Communities bridged: [0, 2, 5]
+    Source: raw/politicas/politicas_energia.md
+  [11 edges]  ANEEL (Agência Nacional de Energia Elétrica)
+    Communities bridged: [0, 2]
+    Source: raw/INDICE_CREDITO.md
+  [10 edges]  Transformação Digital das Distribuidoras
+    Communities bridged: [0, 2]
+    Source: raw/tecnologia/transformacao_digital_distribuidoras.md
+  [ 3 edges]  ANEEL (Agência Nacional de Energia Elétrica)
+    Communities bridged: [7]
+    Source: raw/regulacao/README.md
+
+========================================================================
+  Execution complete. Results above are drawn from graph.json (220 nodes, 304 edges).
+  All citations traceable to source files in raw/
+========================================================================
