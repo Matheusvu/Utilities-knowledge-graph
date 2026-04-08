@@ -1,0 +1,482 @@
+{
+  "communities": {
+    "0": [
+      "cemig_concessoes",
+      "concept_acl",
+      "concept_acl_abertura",
+      "concept_acr",
+      "concept_angra3",
+      "concept_cde",
+      "concept_concessao_hidro_cemig",
+      "concept_copel_telecom",
+      "concept_covenant",
+      "concept_cpfl_comercializacao",
+      "concept_cva",
+      "concept_dea",
+      "concept_dl_ebitda",
+      "concept_emborcacao",
+      "concept_gsf",
+      "concept_mrr",
+      "concept_pld",
+      "concept_rap",
+      "concept_rationale_cemig_binary",
+      "concept_rationale_copel_leverage",
+      "concept_rationale_stategrid_support",
+      "concept_rationale_wacc_reducao",
+      "concept_risco_hidrologico",
+      "concept_rtp",
+      "concept_wacc",
+      "copel_concessoes",
+      "copel_credito",
+      "cpfl_concessoes",
+      "cpfl_credito",
+      "energisa_concessoes",
+      "energisa_credito",
+      "entity_aneel",
+      "entity_bndes",
+      "entity_ccee",
+      "entity_cemig",
+      "entity_cnen",
+      "entity_copel",
+      "entity_cpfl",
+      "entity_eletrobras",
+      "entity_energisa",
+      "entity_equatorial",
+      "entity_governo_mg",
+      "entity_governo_pr",
+      "entity_mme",
+      "entity_state_grid",
+      "indice_credito",
+      "perfis_crediticios",
+      "riscos_politicos"
+    ],
+    "1": [
+      "acl_compensacao_regulatoria",
+      "acl_estrategias_distribuidoras",
+      "acl_mecanismo_receita",
+      "aneel_calendario_rtps",
+      "aneel_cva",
+      "aneel_dea_eficiencia",
+      "aneel_dec_fec_penalidades",
+      "aneel_encargos_setoriais",
+      "aneel_framework",
+      "aneel_parcela_a_b",
+      "aneel_rab",
+      "aneel_rn1000_2021",
+      "aneel_rtp_ciclo",
+      "aneel_tarifas_rtp",
+      "aneel_wacc_regulatorio",
+      "dinamicas_mercado",
+      "lei_14300_2022_gd",
+      "mercado_acl_migracao",
+      "mercado_capacidade_instalada",
+      "mercado_cva_risco",
+      "mercado_gd_crescimento",
+      "mercado_gsf_risco",
+      "migracao_acl_distribuidoras",
+      "rationale_acl_tusd_retida",
+      "rationale_wacc_reducao_cp040"
+    ],
+    "2": [
+      "concept_ami",
+      "concept_bess",
+      "concept_dec_fec",
+      "concept_demand_response",
+      "concept_h2v",
+      "concept_lei_14827",
+      "concept_offshore_wind",
+      "concept_pnt",
+      "concept_prodist",
+      "concept_rab",
+      "concept_rationale_ami_roi",
+      "concept_rationale_iberdrola_support",
+      "concept_rn_1072",
+      "concept_scada",
+      "concept_smart_grid",
+      "concept_solar_gd",
+      "concept_v2g",
+      "entity_iberdrola",
+      "entity_neoenergia",
+      "neoenergia_concessoes",
+      "neoenergia_credito",
+      "tendencias_tech",
+      "transformacao_digital"
+    ],
+    "3": [
+      "ccee_acr_acl_estrutura",
+      "ccee_contabilizacao_liquidacao",
+      "ccee_encargos_setoriais",
+      "ccee_gsf_mrr",
+      "ccee_pld_calculo",
+      "ccee_regras_comercializacao",
+      "ons_ccee_mercado",
+      "ons_cenarios_estresse",
+      "ons_cmo_conceito",
+      "ons_cmse_aversao_risco",
+      "ons_gsf_detalhamento",
+      "ons_instrumentos",
+      "ons_itaipu_interconexoes",
+      "ons_mrr_mecanismo",
+      "ons_reservatorios_sazonalidade",
+      "ons_risco_hidrologico",
+      "pld_basis_risk",
+      "pld_drivers_estruturais",
+      "pld_historico_analise",
+      "pld_volatilidade_analise",
+      "rationale_mrr_pos2017"
+    ],
+    "4": [
+      "aneel_caducidade",
+      "aneel_concessoes_distribuicao",
+      "aneel_fundo_reversao",
+      "aneel_mudanca_controle",
+      "aneel_renovacao_releilao",
+      "cemig_cliff_concessoes",
+      "cemig_dea_opex",
+      "cemig_divida_covenants",
+      "cemig_governanca_estatal",
+      "cemig_perfil_credito",
+      "equatorial_acl_risco",
+      "equatorial_ceee_risco",
+      "equatorial_cemar_vencimento",
+      "equatorial_concessoes_contratos",
+      "equatorial_participacao_cemig",
+      "equatorial_perfil_credito",
+      "equatorial_transmissao_portfolio",
+      "equatorial_turnaround_modelo",
+      "rationale_cemig_cliff_covenant"
+    ],
+    "5": [
+      "carbon_market_sbce",
+      "concept_cbe",
+      "concept_green_bond",
+      "concept_irec",
+      "concept_lei_15042",
+      "concept_luz_para_todos",
+      "concept_ndc_brasil",
+      "concept_pne_2050",
+      "concept_renovabio",
+      "concept_sbce",
+      "concept_sinase",
+      "concept_slb",
+      "concept_taxonomia_verde",
+      "entity_cnpe",
+      "entity_epe",
+      "entity_mcti",
+      "politicas_energia"
+    ],
+    "6": [
+      "mercado_geracao_distribuida",
+      "politicas_cnpe",
+      "politicas_descarbonizacao",
+      "politicas_epe",
+      "politicas_ndc_brasil",
+      "politicas_pne",
+      "regulacao_mme",
+      "tecnologia_ami",
+      "tecnologia_bess",
+      "tecnologia_eolica",
+      "tecnologia_hidrogenio_verde",
+      "tecnologia_smart_grids",
+      "tecnologia_solar_fotovoltaica"
+    ],
+    "7": [
+      "mercado_acl",
+      "mercado_acr",
+      "mercado_leiloes",
+      "mercado_livre",
+      "mercado_pld",
+      "regulacao_aneel",
+      "regulacao_ccee",
+      "regulacao_prodist",
+      "regulacao_regras_comercializacao_ccee",
+      "regulacao_resolucao_normativa"
+    ],
+    "8": [
+      "lei_14827_2024_offshore",
+      "lei_15042_2024_sbce",
+      "leilao_a3_2025_offshore",
+      "leiloes_a5_estrutura",
+      "leiloes_contrato_a5_credito",
+      "leiloes_historico_pipeline",
+      "leiloes_transmissao_historico",
+      "marco_regulatorio_novas_tecnologias",
+      "portaria_mme_50_2026_h2v",
+      "rn_1072_2026_bess"
+    ],
+    "9": [
+      "eletrobras_angra3_risco",
+      "eletrobras_compulsorio_privatizacao",
+      "eletrobras_concessoes_contratos",
+      "eletrobras_eficiencia_desinvestimento",
+      "eletrobras_perfil_credito",
+      "eletrobras_privatizacao_2022",
+      "eletrobras_rgr",
+      "rationale_eletrobras_eficiencia_privatizacao"
+    ],
+    "10": [
+      "concept_debenture_incentivada",
+      "concept_dscr",
+      "concept_eolica_onshore",
+      "concept_lcoe",
+      "concept_project_finance",
+      "concept_rationale_debenture_incentivada",
+      "economics_renovaveis"
+    ],
+    "11": [
+      "mercado_sin",
+      "regulacao_ons",
+      "regulacao_procedimentos_rede_ons"
+    ],
+    "12": [
+      "empresas_eletrobras",
+      "politicas_privatizacoes"
+    ],
+    "13": [
+      "tecnologia_hidreletricas"
+    ],
+    "14": [
+      "politicas_luz_para_todos"
+    ],
+    "15": [
+      "politicas_marco_saneamento"
+    ],
+    "16": [
+      "empresas_cpfl"
+    ],
+    "17": [
+      "empresas_equatorial"
+    ],
+    "18": [
+      "empresas_energisa"
+    ],
+    "19": [
+      "empresas_enel_brasil"
+    ],
+    "20": [
+      "empresas_neoenergia"
+    ],
+    "21": [
+      "empresas_cemig"
+    ],
+    "22": [
+      "empresas_copel"
+    ],
+    "23": [
+      "empresas_engie_brasil"
+    ],
+    "24": [
+      "empresas_aes_brasil"
+    ],
+    "25": [
+      "entity_ons"
+    ],
+    "26": [
+      "concept_tusd"
+    ]
+  },
+  "cohesion": {
+    "0": 0.08,
+    "1": 0.09,
+    "2": 0.14,
+    "3": 0.11,
+    "4": 0.13,
+    "5": 0.16,
+    "6": 0.15,
+    "7": 0.2,
+    "8": 0.24,
+    "9": 0.32,
+    "10": 0.33,
+    "11": 0.67,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0,
+    "26": 1.0
+  },
+  "gods": [
+    {
+      "id": "indice_credito",
+      "label": "\u00cdndice de Cr\u00e9dito BTG Utilities",
+      "edges": 22
+    },
+    {
+      "id": "riscos_politicos",
+      "label": "Riscos Pol\u00edticos e Regulat\u00f3rios 2026",
+      "edges": 15
+    },
+    {
+      "id": "politicas_energia",
+      "label": "Pol\u00edticas Energ\u00e9ticas Brasil",
+      "edges": 11
+    },
+    {
+      "id": "carbon_market_sbce",
+      "label": "SBCE Mercado Brasileiro de Carbono",
+      "edges": 11
+    },
+    {
+      "id": "entity_aneel",
+      "label": "ANEEL (Ag\u00eancia Nacional de Energia El\u00e9trica)",
+      "edges": 11
+    },
+    {
+      "id": "transformacao_digital",
+      "label": "Transforma\u00e7\u00e3o Digital das Distribuidoras",
+      "edges": 10
+    },
+    {
+      "id": "tendencias_tech",
+      "label": "Tend\u00eancias Tecnol\u00f3gicas Setor El\u00e9trico Brasileiro",
+      "edges": 10
+    },
+    {
+      "id": "entity_cpfl",
+      "label": "CPFL Energia (CPFL3)",
+      "edges": 10
+    },
+    {
+      "id": "entity_neoenergia",
+      "label": "Neoenergia (NEOE3)",
+      "edges": 9
+    },
+    {
+      "id": "entity_cemig",
+      "label": "Cemig (CMIG3/CMIG4)",
+      "edges": 8
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Green Bond / Instrumento ESG Verde",
+      "target": "Debentures Incentivadas (Lei 12.431)",
+      "source_files": [
+        "raw/politicas/carbon_market_sbce.md",
+        "raw/tecnologia/economics_renovaveis.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "ONS Cen\u00e1rios de Estresse para Cr\u00e9dito",
+      "target": "Cemig Cliff de Concess\u00f5es Hidrel\u00e9tricas 2027-2030",
+      "source_files": [
+        "raw/regulacao/ons_risco_hidrologico.md",
+        "raw/empresas/cemig/perfil_credito.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities; peripheral node `ONS Cen\u00e1rios de Estresse para Cr\u00e9dito` unexpectedly reaches hub `Cemig Cliff de Concess\u00f5es Hidrel\u00e9tricas 2027-2030`"
+    },
+    {
+      "source": "Cemig-D DEA Score e Problema de OPEX",
+      "target": "ANEEL DEA \u2014 An\u00e1lise Envolt\u00f3ria de Dados Efici\u00eancia Operacional",
+      "source_files": [
+        "raw/empresas/cemig/perfil_credito.md",
+        "raw/regulacao/aneel_tarifas_rtp.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "Risco Hidrol\u00f3gico GSF \u2014 Generation Scaling Factor",
+      "target": "CCEE GSF e MRR \u2014 Mecanismo de Reparti\u00e7\u00e3o de Riscos",
+      "source_files": [
+        "raw/mercado/dinamicas_mercado.md",
+        "raw/regulacao/ccee_regras_comercializacao.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "ONS e CCEE \u2014 Opera\u00e7\u00e3o e Comercializa\u00e7\u00e3o",
+      "target": "CCEE Regras de Comercializa\u00e7\u00e3o e Mec\u00e2nica de Mercado",
+      "source_files": [
+        "raw/regulacao/ons_ccee_mercado.md",
+        "raw/regulacao/ccee_regras_comercializacao.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; semantically similar concepts with no structural link; peripheral node `ONS e CCEE \u2014 Opera\u00e7\u00e3o e Comercializa\u00e7\u00e3o` unexpectedly reaches hub `CCEE Regras de Comercializa\u00e7\u00e3o e Mec\u00e2nica de Mercado`"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `\u00cdndice de Cr\u00e9dito BTG Utilities` connect `ACL Migra\u00e7\u00e3o e Concess\u00f5es` to `Digitaliza\u00e7\u00e3o e Smart Grid`?",
+      "why": "High betweenness centrality (0.053) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `Medi\u00e7\u00e3o Inteligente (AMI/AMR)`, `Energia E\u00f3lica Onshore/Offshore`, `PCH e UHE (Hidrel\u00e9tricas)` to the rest of the system?",
+      "why": "79 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `ACL Migra\u00e7\u00e3o e Concess\u00f5es` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.08 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Regula\u00e7\u00e3o Tarif\u00e1ria RTP` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.09 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Digitaliza\u00e7\u00e3o e Smart Grid` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.14 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `CCEE Mercado e Liquida\u00e7\u00e3o` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.11 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `ANEEL Concess\u00f5es e Distribui\u00e7\u00e3o` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.13 - nodes in this community are weakly interconnected."
+    }
+  ],
+  "labels": {
+    "0": "ACL Migra\u00e7\u00e3o e Concess\u00f5es",
+    "1": "Regula\u00e7\u00e3o Tarif\u00e1ria RTP",
+    "2": "Digitaliza\u00e7\u00e3o e Smart Grid",
+    "3": "CCEE Mercado e Liquida\u00e7\u00e3o",
+    "4": "ANEEL Concess\u00f5es e Distribui\u00e7\u00e3o",
+    "5": "ESG Carbono e Finan\u00e7as Verdes",
+    "6": "Pol\u00edticas Energ\u00e9ticas e GD",
+    "7": "Estrutura do Mercado El\u00e9trico",
+    "8": "Novas Tecnologias e Legisla\u00e7\u00e3o",
+    "9": "Eletrobras P\u00f3s-Privatiza\u00e7\u00e3o",
+    "10": "Financiamento e Project Finance",
+    "11": "ONS e Opera\u00e7\u00e3o do SIN",
+    "12": "Privatiza\u00e7\u00f5es do Setor",
+    "13": "Hidrel\u00e9tricas",
+    "14": "Luz Para Todos",
+    "15": "Marco do Saneamento",
+    "16": "CPFL Energia",
+    "17": "Equatorial Energia",
+    "18": "Energisa",
+    "19": "Enel Brasil",
+    "20": "Neoenergia",
+    "21": "Cemig",
+    "22": "Copel",
+    "23": "Engie Brasil",
+    "24": "AES Brasil",
+    "25": "ONS Operador",
+    "26": "TUSD"
+  }
+}
