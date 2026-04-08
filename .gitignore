@@ -1,4 +1,4 @@
-graphify-out/
+# graphify-out/ (outputs tracked intentionally)
 __pycache__/
 *.pyc
 .DS_Store
