@@ -280,7 +280,10 @@ add_rect(slide, 0, 6.6, 13.33, 0.9, NAVY_LIGHT)
 add_text(slide, "github.com/safishamsi/graphify   |   Open source   |   Works inside Claude Code",
          0.45, 6.67, 12, 0.5, 12, color=GOLD)
 
-# ─── Save ──────────────────────────────────────────────────────────────────
-out_path = "/home/user/Utilities-knowledge-graph/graphify-out/btg_top10_usecases.pptx"
+import os
+
+out_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "graphify-out")
+os.makedirs(out_dir, exist_ok=True)
+out_path = os.path.join(out_dir, "btg_top10_usecases.pptx")
 prs.save(out_path)
 print(f"Saved: {out_path}")
