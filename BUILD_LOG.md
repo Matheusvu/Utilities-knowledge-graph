@@ -24,7 +24,20 @@
 **Broken/Pending:** repo skeleton folders not yet created (Phase 0.2); `.claude/` skills+hooks and `registry.schema.json` not yet created (Phase 0.3).
 **Next step:** Phase 0.2 — create the folder skeleton with `.gitkeep`s and per-folder `CLAUDE.md` stubs.
 
+## 2026-06-17 — Source inventory received; plan made source-backed
+
+**What:** Archived the Perplexity Deep Research source inventory to `research/reports/2026-06-17_brazil_power_source_inventory.md` (full sector-wide catalog with URLs, formats, access methods, tiers). Updated `PLAN.md` to be source-driven.
+**Why:** User provided the deep-research output and asked to update the plan based on sources.
+**Decisions:**
+- Adopted the **three-layer curtailment architecture** (PLAN §5.2): **ONS** physical truth → **ANEEL** legal/rule layer → **CCEE** settlement/cash layer, + **litigation overlay** (STJ Jan-2025). Core product = events tagged by reason (reliability|energetic) AND compensation status (compensable|not|under-litigation|methodology-transition).
+- **Systems-of-record:** ONS = physical; ANEEL = regulatory + asset master (**SIGA**, used for referential-integrity / CEG); CCEE = market + settlement; CVM = issuer/credit.
+- **Fetch is CKAN-first** (ONS/ANEEL/CCEE/CVM `api/3/action/`), storing both landing page and resource URL with a metadata fallback (PLAN §4.2) — handles known portal/path rotation.
+- Sharpened semantic checks & risks for the units trap and the physical-vs-compensable-vs-settled distinction.
+**Works now:** source inventory archived; `PLAN.md` §4.2/§4.4/§4.5/§5/§10/§11 updated; first-wave curtailment datasets enumerated (the four ONS constrained-off datasets + denominators + SIGA + methodology docs).
+**Broken/Pending:** repo skeleton not yet created (Phase 0.2); `registry.schema.json` not yet created (Phase 0.3); `sources/registry.yml` not yet built (Phase 1, now unblocked).
+**Next step:** Phase 0.2 — folder skeleton + per-folder `CLAUDE.md` stubs; then 0.3 (schema) and 1.1 (build registry curtailment-first from the archived inventory).
+
 ---
 
 ### Current state
-**Phase 0.1 complete.** Planning and foundation docs are in place. Next actionable step: **Phase 0.2 — folder skeleton + per-folder `CLAUDE.md` stubs.** Phase 1 (build `sources/registry.yml`) is blocked on the Perplexity source-discovery output.
+**Phase 0.1 complete; source inventory archived and plan made source-backed.** Phase 1 is now **unblocked** (research in hand). Next actionable step: **Phase 0.2 — folder skeleton + per-folder `CLAUDE.md` stubs**, then 0.3 (`registry.schema.json`) and 1.1 (build `sources/registry.yml`, curtailment-first).

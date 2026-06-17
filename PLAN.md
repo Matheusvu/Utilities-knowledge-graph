@@ -134,8 +134,10 @@ Validated against `registry.schema.json`.
 
 ### 4.2 Fetch layer (`pipeline/fetch/`)
 - One fetcher per source (or per dataset family), reading endpoints from the registry.
+- **CKAN-first.** ONS, ANEEL, CCEE, and CVM expose CKAN APIs (`<portal>/api/3/action/...`); prefer the API to discover current resource URLs, then download the resource file. This survives portal path changes better than hard-coded file URLs. Non-CKAN sources (ANA HidroWebService — email registration; INMET — download-first; EPE/MME — PDF-first) get bespoke fetchers.
+- **Store both layers of identity:** the human **landing page** *and* the **resource-file path**, so a fallback can re-resolve via portal metadata when filenames/resource IDs rotate (a known instability).
 - **Portable:** plain HTTP via `requests`/`httpx`, configurable user-agent, retries with backoff, on-disk cache.
-- **Provenance:** each download writes a sidecar `*.provenance.json` (source id, URL, retrieved_at, http_status, sha256, bytes) and appends to `raw/_manifest.csv`.
+- **Provenance:** each download writes a sidecar `*.provenance.json` (source id, landing URL, resource URL, retrieved_at, http_status, sha256, bytes) and appends to `raw/_manifest.csv`.
 - **Idempotent:** re-running skips unchanged files (checksum compare).
 - Raw files are **never edited** after landing.
 
@@ -149,7 +151,7 @@ Validated against `registry.schema.json`.
 - **Domain ranges:** curtailment ≥ 0; curtailment ≤ installed capacity; percentages ∈ [0,100].
 - **Temporal:** continuous dates per series; no duplicate keys; consistent timezone.
 - **Reconciliation:** Σ(reason categories) == total; Σ(plants) == subsystem total (within tolerance).
-- **Referential integrity:** every plant id resolves in the plant master registry.
+- **Referential integrity:** every plant id resolves in the plant master = **ANEEL SIGA** (CEG codes, installed capacity).
 - **Source fidelity:** processed row counts/totals match the raw file's reported totals; raw checksum recorded.
 - **Freshness:** latest data date within expected lag for the source's cadence.
 - Failure ⇒ pipeline aborts; report written to `validation/reports/`.
@@ -160,7 +162,8 @@ A Claude-run review routine that:
 - Performs **cross-source corroboration** (ONS volumes vs. EPE/news/CCEE).
 - Verifies **narrative-vs-number consistency** for extracted figures.
 - Flags **unexplained anomalies/spikes** ("explained" vs "review").
-- Catches the **unit-confusion trap** (MWmed vs MWh vs GWh).
+- Catches the **unit-confusion trap** (MW vs MWmed vs MWh vs GWh; EAR vs ENA vs contracted energy).
+- Distinguishes **physical restricted generation** from **compensable energy-not-supplied** from **settlement adjustments** (which land months later) — the three layers must never be conflated.
 - Output: a flagged report appended to `validation/reports/`; never silently blocks or passes.
 
 ### 4.6 Lineage & manifest
@@ -177,17 +180,29 @@ A Claude-run review routine that:
 - What is the **compensation (ressarcimento)** framework status, and how is it evolving (ANEEL rules, dockets, litigation)?
 - **Credit lens:** revenue-at-risk for financed renewable SPVs and how the compensation regime mitigates it.
 
-### 5.2 Inputs (from registry)
-- ONS constrained-off datasets (eólica + fotovoltaica), generation & installed capacity.
-- ANEEL: installed-capacity registry (SIGA), curtailment-compensation resolutions/despachos.
-- News/associations (ABEEólica, ABSOLAR, trade press) for corroboration and the regulatory thread.
+### 5.2 The three-layer model (source-backed)
+The source inventory (`research/reports/2026-06-17_brazil_power_source_inventory.md`) shows that curtailment is **physically transparent before it is economically transparent**. The monitor must therefore be built in three layers, plus a litigation overlay:
 
-### 5.3 Outputs
+1. **Physical truth — ONS.** Plant-level constrained-off, with cause classification (reliability vs. energetic), normalized against generation/load/interchange/hydrology.
+2. **Legal/rule layer — ANEEL.** The compensation (*ressarcimento*) rules and their evolution: REN 1.073/2023 (solar), the Dec-2024 wind improvements, the 2026 PV criterion, plus dockets/consultations and DOU publication.
+3. **Settlement/cash layer — CCEE.** How rules become money: constrained-off communications, reaccounting/ressarcimento chronograms, transitional-vs-definitive methodology, Lei 15.269/2025.
+4. **Litigation overlay.** STJ Jan-2025 suspension of decisions ordering full compensation — the legal perimeter is contested.
+
+**Event classification:** every curtailment event is tagged by **reason** (reliability | energetic) *and* by **compensation status** (compensable | not compensable | under litigation | methodology-transition). This is the core analytical product, and the credit read flows from it.
+
+### 5.3 Inputs (concrete first-wave datasets)
+Physical (ONS open data, CKAN): `restricao_coff_eolica_usi`, `restricao_coff_eolica_geracao`, `restricao_coff_fotovoltaica_usi`, `restricao_coff_fotovoltaica_geracao`; denominators/context `geracao-usina-2` (hourly gen by plant), `curva-carga-horaria`, `intercambios-entre-subsistemas`, `ena-diario-subsistema`, `ear-diario-subsistema`, `balanco-energia-subsistema`; methodology docs (NT-ONS DOP 0022/2025, RT DGL-ONS 0189-2025, FAQ, RO-AO.BR.13).
+Asset master (ANEEL): **SIGA** (plant identity / CEG / installed capacity) — used for referential-integrity checks.
+Rule layer (ANEEL): compensation news/resolutions, Pesquisa Pública dockets, DOU.
+Settlement layer (CCEE): constrained-off communications + reaccounting chronograms (Acervo / Contabilização).
+Corroboration (secondary): ABEEólica, ABSOLAR, CanalEnergia, MegaWhat.
+
+### 5.4 Outputs
 - `processed/curtailment/curtailment_daily.csv` + `_monthly.csv` (tidy, validated, lineage-tagged).
 - `analysis/curtailment/REPORT.md` — narrative + tables + the credit read, with sources.
 - Contribution to `DASHBOARD.md`.
 
-### 5.4 Acceptance criteria
+### 5.5 Acceptance criteria
 - All deterministic checks pass; semantic review produces zero unresolved "review" flags (or each is annotated).
 - Every figure in `REPORT.md` traces to a `processed/` cell and onward to a `raw/` source.
 - Numbers reconcile against at least one independent secondary source.
@@ -241,9 +256,9 @@ Each step's checkpoint must be observable (a file exists, a script exits 0, a ch
 - **0.2** Folder skeleton (`raw/ processed/ pipeline/ sources/ validation/ analysis/ conversations/`) with `.gitkeep`s and per-folder `CLAUDE.md` stubs. — *Checkpoint:* tree matches §3.1; committed.
 - **0.3** `.claude/` skills + hooks stubs (no behavior yet) + `sources/registry.schema.json`. — *Checkpoint:* `registry.schema.json` is valid JSON Schema; an empty `registry.yml` validates against it.
 
-### Phase 1 — Source registry (after Perplexity output lands)
-- **1.1** Convert the research output into `sources/registry.yml`, **curtailment sources only** first (ONS constrained-off eólica/solar, generation, capacity). — *Checkpoint:* validates against schema; the key ONS datasets are present with `data_url`.
-- **1.2** Add remaining sector-wide sources to the registry. — *Checkpoint:* validates; categories from §3 are represented.
+### Phase 1 — Source registry (research is in hand ✅ — see `research/reports/2026-06-17_brazil_power_source_inventory.md`)
+- **1.1** Convert the research output into `sources/registry.yml`, **curtailment sources only** first — the ONS constrained-off four + denominators (`geracao-usina-2`, `curva-carga-horaria`, `intercambios-entre-subsistemas`), ANEEL SIGA, and the methodology docs. — *Checkpoint:* validates against schema; those datasets present with landing + resource URLs.
+- **1.2** Add the rule/settlement layer (ANEEL compensation news+dockets, CCEE constrained-off communications, STJ/DOU) and then the remaining sector-wide sources from the inventory. — *Checkpoint:* validates; the three layers + secondary corroboration are represented.
 
 ### Phase 2 — Vertical slice: ONE source, end to end ⭐ (the anti-"thousand errors" step)
 - **2.1** Fetch **one** ONS constrained-off dataset → `raw/ons/` with provenance sidecar + manifest row. — *Checkpoint:* raw file on disk; `*.provenance.json` + `_manifest.csv` updated; sha256 recorded.
@@ -261,7 +276,7 @@ Each step's checkpoint must be observable (a file exists, a script exits 0, a ch
 - **5.1** Author `checks/semantic.md` routine; run first review (trend plausibility, cross-source, unit traps). — *Checkpoint:* a dated semantic report exists; every flag is annotated.
 
 ### Phase 6 — Curtailment report (the product)
-- **6.1** `analysis/curtailment/REPORT.md` + `DASHBOARD.md` contribution. — *Checkpoint:* meets §5.4; every figure traces to a `processed/` cell.
+- **6.1** `analysis/curtailment/REPORT.md` + `DASHBOARD.md` contribution. — *Checkpoint:* meets §5.5; every figure traces to a `processed/` cell.
 
 ### Phase 7 — Memory loop
 - **7.1** `Stop` + `SessionStart` hooks; **7.2** `/log-insight` skill. — *Checkpoint:* a session auto-records to `conversations/`; an insight promotes into the KB.
@@ -277,11 +292,13 @@ Each step's checkpoint must be observable (a file exists, a script exits 0, a ch
 ## 11. Risks & open items
 
 - **Network/egress** varies by environment; fetchers must degrade gracefully and be runnable where access exists (e.g., user's computer). *(Mitigated by portable design.)*
-- **Source instability** (ONS/ANEEL portal changes, broken links): registry + provenance make breakage detectable; fetchers fail loudly.
-- **Unit/definition traps** (MWmed vs MWh; reliability vs energetic curtailment definitions): handled explicitly in transform + semantic checks.
+- **Source instability** (gov.br/CKAN path & resource-ID rotation): CKAN-first fetching + storing landing *and* resource URLs + metadata fallback make breakage detectable and recoverable; fetchers fail loudly.
+- **Economic-transparency lag:** physical curtailment (ONS) is published well before the cash consequence (ANEEL rules → CCEE settlement → litigation). The three-layer model + event classification (§5.2) is the mitigation; never infer compensation from physical data alone.
+- **Unit/definition traps** (MW/MWmed/MWh/GWh, EAR/ENA, physical vs compensable vs settled): handled explicitly in transform + semantic checks.
+- **PDF-first / paywalled sources:** EPE/MME and some ANEEL procedural materials are PDF; ANBIMA's full feed and ratings agencies are paid/gated — these stay secondary/manual, with CVM as the issuer system-of-record.
 - **MNPI/compliance** on a shared repo: memory loop persists conclusions and public facts, not sensitive deal data, unless directed.
 - **Open input:** the other team's `CLAUDE.md`/structure (to mirror conventions) — incorporate if/when shared.
-- **Open input:** Perplexity source-discovery output — unblocks Phase 1.
+- **Resolved:** Perplexity source-discovery output received and archived; Phase 1 is unblocked.
 
 ---
 
