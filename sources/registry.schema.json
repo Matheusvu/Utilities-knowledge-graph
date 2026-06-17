@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BTG Brazil Energy — data source registry",
+  "description": "Canonical catalog of data/information sources feeding the pipeline. See PLAN.md §4.1.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "sources"],
+  "properties": {
+    "version": { "type": "string" },
+    "updated": { "type": "string" },
+    "sources": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/source" }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "name", "publisher", "category", "url",
+        "provides", "format", "access", "tier",
+        "relevance_credit", "relevance_curtailment"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$",
+          "description": "snake_case unique id"
+        },
+        "name": { "type": "string" },
+        "publisher": { "type": "string" },
+        "category": {
+          "type": "string",
+          "enum": [
+            "system_operation", "curtailment", "market_commercial",
+            "regulation", "registry", "planning_policy",
+            "financial_credit", "projects_tech", "hydrology_meteo",
+            "news_media", "legal_tracking", "methodology"
+          ]
+        },
+        "layer": {
+          "type": "string",
+          "description": "Curtailment three-layer model (PLAN §5.2)",
+          "enum": ["physical", "rule", "settlement", "litigation", "context"]
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Human landing page (always stored)"
+        },
+        "data_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Direct resource/API URL when known (else resolved via CKAN at fetch)"
+        },
+        "provides": { "type": "string" },
+        "format": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "csv", "xlsx", "parquet", "json", "api",
+              "pdf", "html", "zip", "shapefile", "dashboard", "txt", "ods"
+            ]
+          }
+        },
+        "access": {
+          "type": "string",
+          "enum": ["open_download", "api_ckan", "api_key", "login", "paid", "scrape"]
+        },
+        "update_frequency": { "type": "string" },
+        "history_from": { "type": "string" },
+        "granularity": { "type": "string" },
+        "language": { "type": "string", "enum": ["pt", "en", "mixed"] },
+        "tier": { "type": "string", "enum": ["primary", "secondary", "exchange"] },
+        "relevance_credit": { "type": "string", "enum": ["high", "medium", "low"] },
+        "relevance_curtailment": { "type": "string", "enum": ["high", "medium", "low"] },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

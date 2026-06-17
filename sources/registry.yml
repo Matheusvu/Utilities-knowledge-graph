@@ -1,0 +1,259 @@
+# Data source registry — canonical catalog feeding the pipeline (see PLAN.md §4.1).
+# Validated by: python pipeline/checks/validate_registry.py
+#
+# Phase 1.1 scope: CURTAILMENT-FIRST — the physical-truth layer (ONS constrained-off
+# + denominators/context), the asset master (ANEEL SIGA), and ONS methodology docs.
+# Phase 1.2 will add the rule layer (ANEEL compensation), settlement layer (CCEE),
+# litigation overlay (STJ/DOU), and the remaining sector-wide sources.
+#
+# Source of truth for these entries: research/reports/2026-06-17_brazil_power_source_inventory.md
+# NOTE: `data_url` (the actual resource file) is intentionally omitted for CKAN datasets —
+# fetchers resolve the current resource via the CKAN API (api/3/action/) from `url`.
+
+version: "0.1.0"
+updated: "2026-06-17"
+
+sources:
+  # --- ONS: physical truth — constrained-off (the core curtailment datasets) ---
+  - id: ons_coff_eolica_usi
+    name: "Restrição de Operação por Constrained-off de Usinas Eólicas (por usina)"
+    publisher: ONS
+    category: curtailment
+    layer: physical
+    url: "https://dados.ons.org.br/dataset/restricao_coff_eolica_usi"
+    provides: "Energia eólica restringida (constrained-off) por usina, com classificação de causa (confiabilidade vs energética)."
+    format: [csv, xlsx, parquet]
+    access: api_ckan
+    update_frequency: "regular (portal)"
+    history_from: "2022"
+    granularity: "por usina; por subsistema; diário/horário"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+    notes: "Unidade tipicamente MWmed — verificar contra geração. Um dos datasets mais importantes do catálogo."
+
+  - id: ons_coff_eolica_geracao
+    name: "Constrained-off de Usinas Eólicas (detalhado / geração)"
+    publisher: ONS
+    category: curtailment
+    layer: physical
+    url: "https://dados.ons.org.br/dataset/restricao_coff_eolica_geracao"
+    provides: "Registros detalhados de constrained-off eólico para reconstrução de eventos por ativo."
+    format: [csv, xlsx, parquet]
+    access: api_ckan
+    update_frequency: "regular (portal)"
+    history_from: "2022"
+    granularity: "por usina; detalhado"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+    notes: "Melhor camada de detalhe para reconciliação evento-a-evento (publicado dez/2022)."
+
+  - id: ons_coff_fotovoltaica_usi
+    name: "Restrição de Operação por Constrained-off de Usinas Fotovoltaicas (por usina)"
+    publisher: ONS
+    category: curtailment
+    layer: physical
+    url: "https://dados.ons.org.br/dataset/restricao_coff_fotovoltaica_usi"
+    provides: "Energia solar restringida (constrained-off) por usina, com classificação de causa."
+    format: [csv, xlsx, parquet]
+    access: api_ckan
+    update_frequency: "regular (portal)"
+    granularity: "por usina; por subsistema; diário/horário"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+    notes: "Contraparte solar da série eólica."
+
+  - id: ons_coff_fotovoltaica_geracao
+    name: "Constrained-off de Usinas Fotovoltaicas (detalhado / geração)"
+    publisher: ONS
+    category: curtailment
+    layer: physical
+    url: "https://dados.ons.org.br/dataset/restricao_coff_fotovoltaica_geracao"
+    provides: "Registros detalhados de constrained-off solar para análise forense e suporte a liquidação."
+    format: [csv, xlsx, parquet]
+    access: api_ckan
+    granularity: "por usina; detalhado"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+
+  # --- ONS: physical context / denominators ---
+  - id: ons_geracao_usina_horaria
+    name: "Geração por Usina em Base Horária"
+    publisher: ONS
+    category: system_operation
+    layer: physical
+    url: "https://dados.ons.org.br/dataset/geracao-usina-2"
+    provides: "Geração horária por usina — denominador para intensidade de restrição (% curtailed)."
+    format: [csv, xlsx, parquet]
+    access: api_ckan
+    update_frequency: "horário"
+    granularity: "por usina; horário"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+    notes: "Dataset denominador central para estimar energia restringida por usina."
+
+  - id: ons_curva_carga_horaria
+    name: "Curva de Carga Horária"
+    publisher: ONS
+    category: system_operation
+    layer: physical
+    url: "https://dados.ons.org.br/dataset/curva-carga-horaria"
+    provides: "Carga horária do sistema — distingue excedente energético de restrição local de confiabilidade."
+    format: [csv, xlsx, parquet]
+    access: api_ckan
+    update_frequency: "horário"
+    granularity: "por subsistema; horário"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: medium
+
+  - id: ons_intercambios_subsistemas
+    name: "Intercâmbios Entre Subsistemas"
+    publisher: ONS
+    category: system_operation
+    layer: physical
+    url: "https://dados.ons.org.br/dataset/intercambios-entre-subsistemas"
+    data_url: "https://ons-aws-prod-opendata.s3.amazonaws.com/dataset/intercambios_entre_subsistemas/Interc%C3%A2mbio%20entre%20Subsistemas%202026-06.xlsx"
+    provides: "Fluxos de intercâmbio entre subsistemas — diagnóstico de gargalo de escoamento (NE/N -> SE/CO)."
+    format: [xlsx, csv]
+    access: api_ckan
+    update_frequency: "diário"
+    granularity: "por par de subsistemas; diário"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+    notes: "data_url é um exemplo mensal (2026-06); resolver o recurso corrente via CKAN."
+
+  - id: ons_ena_diario_subsistema
+    name: "ENA Diário por Subsistema"
+    publisher: ONS
+    category: hydrology_meteo
+    layer: context
+    url: "https://dados.ons.org.br/dataset/ena-diario-subsistema"
+    provides: "Energia natural afluente diária por subsistema — contexto hidrológico para despacho e PLD."
+    format: [csv, xlsx, parquet]
+    access: api_ckan
+    update_frequency: "diário"
+    granularity: "por subsistema; diário"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: medium
+
+  - id: ons_ear_diario_subsistema
+    name: "EAR Diário por Subsistema"
+    publisher: ONS
+    category: hydrology_meteo
+    layer: context
+    url: "https://dados.ons.org.br/dataset/ear-diario-subsistema"
+    provides: "Energia armazenada (reservatórios) diária por subsistema."
+    format: [csv, xlsx, parquet]
+    access: api_ckan
+    update_frequency: "diário"
+    granularity: "por subsistema; diário"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: medium
+
+  - id: ons_balanco_energia_subsistema
+    name: "Balanço de Energia nos Subsistemas"
+    publisher: ONS
+    category: system_operation
+    layer: physical
+    url: "https://dados.ons.org.br/dataset/balanco-energia-subsistema"
+    provides: "Balanço oferta-demanda por subsistema — atribuição de restrição energética e excedente regional."
+    format: [csv, xlsx, parquet]
+    access: api_ckan
+    granularity: "por subsistema; diário/horário"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+
+  # --- ANEEL: asset master (plant identity / referential integrity) ---
+  - id: aneel_siga
+    name: "SIGA — Sistema de Informações de Geração da ANEEL"
+    publisher: ANEEL
+    category: registry
+    layer: context
+    url: "https://dadosabertos.aneel.gov.br/dataset/siga-sistema-de-informacoes-de-geracao-da-aneel"
+    provides: "Cadastro de usinas: tecnologia, localização, status, código CEG e capacidade instalada."
+    format: [csv, xlsx]
+    access: api_ckan
+    update_frequency: "diário/mensal"
+    granularity: "por usina (CEG)"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: medium
+    notes: "Asset master oficial — usado na checagem de integridade referencial (CEG) e como teto de capacidade."
+
+  # --- ONS: methodology documents (how reliability vs energetic is classified) ---
+  - id: ons_coff_faq
+    name: "ONS — Página/FAQ de Curtailment"
+    publisher: ONS
+    category: methodology
+    layer: physical
+    url: "https://www.ons.org.br/Paginas/faq_curtailment.aspx"
+    provides: "Explicação oficial do ONS sobre curtailment e hub de documentos (reliability vs energética)."
+    format: [html]
+    access: open_download
+    update_frequency: "irregular"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+
+  - id: ons_nt_dop_0022_2025
+    name: "NT-ONS DOP 0022/2025 — Critérios para Gestão de Excedentes Energéticos"
+    publisher: ONS
+    category: methodology
+    layer: physical
+    url: "https://www.ons.org.br/AcervoDigitalDocumentosEPublicacoes/NT-ONS%20DOP%200022.2025%20-%20Crit%C3%A9rios%20para%20Gest%C3%A3o%20de%20Excedentes%20Energ%C3%A9ticos.pdf"
+    provides: "Critérios formais para gestão de excedentes energéticos e lógica de rateio de restrição."
+    format: [pdf]
+    access: open_download
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+
+  - id: ons_rt_dgl_0189_2025
+    name: "RT DGL-ONS 0189/2025 — GT Curtailment (diagnóstico/prospectivo)"
+    publisher: ONS
+    category: methodology
+    layer: physical
+    url: "https://www.ons.org.br/AcervoDigitalDocumentosEPublicacoes/RT%20DGL-ONS%200189-2025%20-%20GT%20Curtailment%20rev1.pdf"
+    provides: "Narrativa longitudinal do operador sobre o problema de curtailment e gargalos prospectivos."
+    format: [pdf]
+    access: open_download
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+
+  - id: ons_ro_ao_br_13
+    name: "RO-AO.BR.13 — Procedimento de Rede (operação relacionada a curtailment)"
+    publisher: ONS
+    category: methodology
+    layer: physical
+    url: "https://www.ons.org.br/paginas/sobre-o-sin/procedimentos-de-rede/vigentes/submodulos-operacao/ro-ao-br-13.pdf"
+    provides: "Procedimento de rede operativo associado à operação de curtailment."
+    format: [pdf]
+    access: open_download
+    language: pt
+    tier: primary
+    relevance_credit: medium
+    relevance_curtailment: high
