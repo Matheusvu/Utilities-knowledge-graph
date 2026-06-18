@@ -257,3 +257,959 @@ sources:
     tier: primary
     relevance_credit: medium
     relevance_curtailment: high
+
+  # ===================================================================
+  # Phase 1.2 — rule layer (ANEEL), settlement layer (CCEE),
+  # litigation overlay, and remaining sector-wide sources.
+  # ===================================================================
+
+  # --- ANEEL: rule layer — curtailment compensation (ressarcimento) ---
+  - id: aneel_news_coff_solar_2026
+    name: "ANEEL — Novo critério de ressarcimento do constrained-off de usinas fotovoltaicas (2026)"
+    publisher: ANEEL
+    category: curtailment
+    layer: rule
+    url: "https://www.gov.br/aneel/pt-br/assuntos/noticias/2026/consumidores-terao-novo-criterio-de-ressarcimento-para-o-constrained-off-de-usinas-fotovoltaicas"
+    provides: "Resumo oficial da atualização 2026 do critério de ressarcimento para solar."
+    format: [html]
+    access: scrape
+    update_frequency: "event-driven"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+
+  - id: aneel_news_coff_eolica_2024
+    name: "ANEEL — Melhorias no critério de ressarcimento de constrained-off para eólicas (dez/2024)"
+    publisher: ANEEL
+    category: curtailment
+    layer: rule
+    url: "https://www.gov.br/aneel/pt-br/assuntos/noticias/2025/aprovadas-melhorias-no-criterio-de-ressarcimento-de-constrained-off-para-eolicas"
+    provides: "Resumo oficial das mudanças de regra de ressarcimento eólico aprovadas em dez/2024."
+    format: [html]
+    access: scrape
+    update_frequency: "event-driven"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+
+  - id: aneel_news_coff_solar_2023
+    name: "ANEEL — Regras de constrained-off de usinas fotovoltaicas (REN 1.073/2023)"
+    publisher: ANEEL
+    category: curtailment
+    layer: rule
+    url: "https://www.gov.br/aneel/pt-br/assuntos/noticias/2023/aneel-aprova-regras-relacionadas-ao-constrained-off-de-usinas-fotovoltaicas"
+    provides: "Resumo oficial da REN 1.073/2023 (constrained-off solar)."
+    format: [html]
+    access: scrape
+    update_frequency: "event-driven"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+
+  # --- CCEE: settlement layer — apuração/ressarcimento do constrained-off ---
+  - id: ccee_coff_eolica_definitiva
+    name: "CCEE — Pacote/metodologia definitiva do constrained-off (eólicas)"
+    publisher: CCEE
+    category: curtailment
+    layer: settlement
+    url: "https://www.ccee.org.br/-/co-ccee-divulga-pacote-de-relatorios-relacionados-a-metodologia-definitiva-do-constrained-off-para-usinas-eolicas.-confira-o-que-muda-"
+    provides: "Comunicado e pacote de relatórios da metodologia definitiva de cálculo eólico."
+    format: [html, pdf]
+    access: scrape
+    update_frequency: "event-driven"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+    notes: "Ponte entre dados físicos do ONS e o ressarcimento em caixa."
+
+  - id: ccee_coff_eolica_cronograma
+    name: "CCEE — Cronograma de recontabilizações/ressarcimentos do constrained-off (eólicas, definitiva)"
+    publisher: CCEE
+    category: curtailment
+    layer: settlement
+    url: "https://www.ccee.org.br/-/cronograma-de-operacionalizacao-das-recontabilizacoes-e-ressarcimentos-associados-ao-constrained-off-para-usinas-eolicas-metodologia-definitiva-"
+    provides: "Cronograma de processamento de recálculo/ressarcimento eólico."
+    format: [html]
+    access: scrape
+    update_frequency: "event-driven"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+
+  - id: ccee_coff_solar_definitiva
+    name: "CCEE — Apuração de ressarcimentos solares (período definitivo, abr/2024+)"
+    publisher: CCEE
+    category: curtailment
+    layer: settlement
+    url: "https://www.ccee.org.br/-/co-apuracao-dos-ressarcimentos-para-usinas-solares-fotovoltaicas-vinculadas-a-leiloes-do-mercado-regulado-para-o-periodo-definitivo-do-constrained-off-a-partir-de-abril-2024-"
+    provides: "Lógica de processamento CCEE para ressarcimento solar no período definitivo."
+    format: [html]
+    access: scrape
+    update_frequency: "event-driven"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+
+  - id: ccee_coff_lei_15269_2025
+    name: "CCEE — Apurações/reapurações de ressarcimento (Lei 15.269/2025, eólicas e solares)"
+    publisher: CCEE
+    category: curtailment
+    layer: settlement
+    url: "https://www.ccee.org.br/-/informacoes-sobre-as-apuracoes-e-reapuracoes-dos-ressarcimentos-associados-a-constrained-off-usinas-eolicas-e-solares-lei-15.269-2025"
+    provides: "Marco de processamento posterior de ressarcimento (Lei 15.269/2025)."
+    format: [html]
+    access: scrape
+    update_frequency: "event-driven"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+
+  - id: ccee_contabilizacao
+    name: "CCEE — Contabilização e liquidação (MCP)"
+    publisher: CCEE
+    category: curtailment
+    layer: settlement
+    url: "https://www.ccee.org.br/contabilizacao"
+    provides: "Processo oficial de contabilização/liquidação e calendários — onde o ressarcimento é operacionalizado."
+    format: [html]
+    access: scrape
+    update_frequency: "mensal"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+
+  # --- Litigation overlay ---
+  - id: stj_coff_2025
+    name: "STJ — Suspensão de decisões que obrigavam ressarcimento integral (jan/2025)"
+    publisher: STJ
+    category: curtailment
+    layer: litigation
+    url: "https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2025/22012025-STJ-suspende-decisoes-que-obrigavam-ressarcimento-integral-de-cortes-de-geracao-de-energia-eolica-e-solar.aspx"
+    provides: "Comunicado oficial sobre marco judicial que afeta expectativa de compensação."
+    format: [html]
+    access: scrape
+    update_frequency: "event-driven"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+
+  - id: dou_search
+    name: "Diário Oficial da União — busca"
+    publisher: Imprensa Nacional
+    category: legal_tracking
+    url: "https://pesquisa.in.gov.br/"
+    provides: "Busca oficial de leis, decretos, despachos ANEEL/MME — verificação de publicação efetiva."
+    format: [html, pdf]
+    access: scrape
+    update_frequency: "diário"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+
+  # --- CCEE: market & commercial (sector-wide) ---
+  - id: ccee_open_data
+    name: "Dados Abertos CCEE (hub)"
+    publisher: CCEE
+    category: market_commercial
+    url: "https://dadosabertos.ccee.org.br/"
+    provides: "Hub oficial de dados de mercado, consumo, contratos, PLD, geração e migração."
+    format: [csv, api]
+    access: api_ckan
+    update_frequency: "varia por dataset"
+    history_from: "2023"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: medium
+
+  - id: ccee_pld_horario
+    name: "CCEE — PLD Horário"
+    publisher: CCEE
+    category: market_commercial
+    url: "https://dadosabertos.ccee.org.br/dataset/pld_horario"
+    provides: "Preço de liquidação das diferenças (PLD) horário por submercado."
+    format: [csv, api]
+    access: api_ckan
+    update_frequency: "horário/diário"
+    granularity: "por submercado; horário"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: medium
+
+  - id: ccee_pld_media_diaria_mensal
+    name: "CCEE — PLD média diária/mensal"
+    publisher: CCEE
+    category: market_commercial
+    url: "https://dadosabertos.ccee.org.br/dataset/pld_media_diaria_mensal"
+    provides: "Agregados de PLD diário e mensal."
+    format: [csv, api]
+    access: api_ckan
+    update_frequency: "diário/mensal"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: low
+
+  - id: ccee_consumo_ambiente
+    name: "CCEE — Consumo mensal por ambiente de comercialização (ACL/ACR)"
+    publisher: CCEE
+    category: market_commercial
+    url: "https://dadosabertos.ccee.org.br/dataset/consumo_mensal_ambiente_comercializacao"
+    provides: "Consumo mensal dividido entre ACL e ACR — indicador de migração ao mercado livre."
+    format: [csv, api]
+    access: api_ckan
+    update_frequency: "mensal"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: low
+
+  - id: ccee_varejista_consumidor
+    name: "CCEE — Mercado varejista / migração de consumidores"
+    publisher: CCEE
+    category: market_commercial
+    url: "https://dadosabertos.ccee.org.br/dataset/varejista_consumidor"
+    provides: "Migração de consumidores, agentes varejistas, recortes por distribuidora/estado/atividade."
+    format: [csv, api]
+    access: api_ckan
+    update_frequency: "mensal"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: low
+
+  - id: ccee_geracao
+    name: "CCEE — Geração (família de datasets)"
+    publisher: CCEE
+    category: market_commercial
+    url: "https://dadosabertos.ccee.org.br/dataset/?tags=gera%C3%A7%C3%A3o"
+    provides: "Indicadores de geração por fonte/mercado; horária a partir de mar/2024 + ZIPs históricos 2018–2024."
+    format: [csv, zip, api]
+    access: api_ckan
+    update_frequency: "horário/mensal"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: medium
+    notes: "Útil para reconciliação comercial contra dados físicos do ONS."
+
+  - id: ccee_leilao_gf
+    name: "CCEE — Leilão GF disponibilidade de geração"
+    publisher: CCEE
+    category: market_commercial
+    url: "https://dadosabertos.ccee.org.br/dataset/disponibilidade_leilao_gf_geracao"
+    provides: "Itens de disponibilidade usados em contextos de adequação/garantia de geração."
+    format: [csv, api]
+    access: api_ckan
+    language: pt
+    tier: primary
+    relevance_credit: medium
+    relevance_curtailment: low
+
+  - id: ccee_leilao_receita
+    name: "CCEE — Leilão disponibilidade de receita"
+    publisher: CCEE
+    category: market_commercial
+    url: "https://dadosabertos.ccee.org.br/dataset/disponibilidade_leilao_receita"
+    provides: "Dados de suporte a leilão do lado disponibilidade/receita."
+    format: [csv, api]
+    access: api_ckan
+    language: pt
+    tier: primary
+    relevance_credit: medium
+    relevance_curtailment: low
+
+  - id: ccee_acervo
+    name: "Acervo CCEE (documentos)"
+    publisher: CCEE
+    category: market_commercial
+    url: "https://www.ccee.org.br/acervo-ccee"
+    provides: "Repositório: InfoPLD Diário, InfoMercado, InfoContratos, regras, comunicados, artefatos de liquidação."
+    format: [html, pdf, xlsx]
+    access: scrape
+    update_frequency: "diário/mensal"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: medium
+    notes: "InfoContratos é especialmente útil para mapear exposição ACR."
+
+  # --- ANEEL: regulation / registry (sector-wide) ---
+  - id: aneel_open_data
+    name: "ANEEL Dados Abertos (hub)"
+    publisher: ANEEL
+    category: regulation
+    url: "https://dadosabertos.aneel.gov.br/"
+    provides: "Portal oficial: geração, tarifas, GD, distribuição, transmissão, mercado e fiscalização."
+    format: [csv, api]
+    access: api_ckan
+    update_frequency: "varia"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: medium
+
+  - id: aneel_gd
+    name: "ANEEL — Relação de Empreendimentos de Geração Distribuída"
+    publisher: ANEEL
+    category: registry
+    url: "https://dadosabertos.aneel.gov.br/dataset/relacao-de-empreendimentos-de-geracao-distribuida"
+    provides: "Cadastro oficial de GD (projeto e sistema)."
+    format: [csv, xlsx]
+    access: api_ckan
+    update_frequency: "diário"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: low
+
+  - id: aneel_tarifas
+    name: "ANEEL — Tarifas de aplicação das distribuidoras"
+    publisher: ANEEL
+    category: regulation
+    url: "https://dadosabertos.aneel.gov.br/dataset/tarifas-de-aplicacao-das-distribuidoras-de-energia-eletrica"
+    provides: "Tabelas tarifárias das distribuidoras."
+    format: [csv, xlsx]
+    access: api_ckan
+    update_frequency: "ciclo tarifário"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: low
+
+  - id: aneel_siget
+    name: "ANEEL — SIGET (gestão da transmissão / geoespacial)"
+    publisher: ANEEL
+    category: registry
+    url: "https://dadosabertos.aneel.gov.br/dataset/siget-sistema-de-gestao-da-transmissao"
+    provides: "Informação geoespacial/ativos de transmissão — mapeamento de gargalos próximos a corredores eólico/solar."
+    format: [csv, shapefile]
+    access: api_ckan
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: medium
+
+  - id: aneel_leiloes
+    name: "ANEEL — Resultado dos leilões de geração"
+    publisher: ANEEL
+    category: regulation
+    url: "https://dadosabertos.aneel.gov.br/dataset/resultado-dos-leiloes-de-geracao"
+    provides: "Resultados oficiais de leilões de geração — pipeline, receitas contratadas, mapeamento de sponsors."
+    format: [csv, xlsx]
+    access: api_ckan
+    update_frequency: "event-driven"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: low
+
+  - id: aneel_bdgd
+    name: "ANEEL — BDGD (base geográfica da distribuidora)"
+    publisher: ANEEL
+    category: registry
+    url: "https://dadosabertos.aneel.gov.br/dataset/base-de-dados-geografica-da-distribuidora-bdgd"
+    provides: "Dados georreferenciados de rede de distribuição e conexões."
+    format: [shapefile, zip]
+    access: api_ckan
+    language: pt
+    tier: primary
+    relevance_credit: medium
+    relevance_curtailment: low
+
+  - id: aneel_samp
+    name: "ANEEL — SAMP (acompanhamento de mercado de distribuição)"
+    publisher: ANEEL
+    category: regulation
+    url: "https://dadosabertos.aneel.gov.br/dataset/samp-sistema-de-acompanhamento-de-informacoes-de-mercado-para-regulacao-e-fiscalizacao-do-segmento-de-distribuicao"
+    provides: "Dados de mercado de distribuição: classes de consumo, supervisão de segmento."
+    format: [csv, xlsx]
+    access: api_ckan
+    update_frequency: "mensal"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: low
+
+  - id: aneel_fiscalizacao
+    name: "ANEEL — Fiscalização / sanções"
+    publisher: ANEEL
+    category: regulation
+    url: "https://dadosabertos.aneel.gov.br/group/fiscalizacao"
+    provides: "Termos de notificação, autos de infração e datasets de fiscalização."
+    format: [csv, xlsx]
+    access: api_ckan
+    update_frequency: "event-driven"
+    language: pt
+    tier: primary
+    relevance_credit: medium
+    relevance_curtailment: low
+
+  - id: aneel_reunioes
+    name: "ANEEL — Reuniões Públicas / decisões"
+    publisher: ANEEL
+    category: regulation
+    url: "https://www.gov.br/aneel/pt-br/reunioes-publicas"
+    provides: "Pautas, atas, vídeos, decisões monocráticas, deliberações de diretoria."
+    format: [html, pdf]
+    access: scrape
+    update_frequency: "semanal/event-driven"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: medium
+    notes: "Forma mais rápida de acompanhar decisões regulatórias."
+
+  - id: aneel_pesquisa_publica
+    name: "ANEEL — Pesquisa Pública / SEI / Sicnet2"
+    publisher: ANEEL
+    category: legal_tracking
+    url: "https://www.gov.br/aneel/pt-br/canais_atendimento/processo-eletronico/pesquisa-publica"
+    provides: "Acesso a processos pendentes e históricos (SEI 2025+; Sicnet2 anterior)."
+    format: [html, pdf]
+    access: scrape
+    update_frequency: "event-driven"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: high
+    notes: "Essencial para acompanhar dockets de regra de ressarcimento e arquivos pré-litígio."
+
+  - id: aneel_agenda
+    name: "ANEEL — Agenda Regulatória"
+    publisher: ANEEL
+    category: regulation
+    url: "https://www.gov.br/aneel/pt-br/assuntos/governanca-regulatoria/agenda-regulatoria"
+    provides: "Agenda regulatória oficial e temas prioritários."
+    format: [html, pdf]
+    access: scrape
+    language: pt
+    tier: primary
+    relevance_credit: medium
+    relevance_curtailment: medium
+
+  # --- EPE / MME / policy ---
+  - id: epe_portal
+    name: "EPE — portal de publicações"
+    publisher: EPE
+    category: planning_policy
+    url: "https://www.epe.gov.br/"
+    provides: "Instituição de planejamento: outlooks, estudos de leilão, publicações estatísticas."
+    format: [html, pdf, xlsx]
+    access: open_download
+    update_frequency: "periódico"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: medium
+
+  - id: epe_pde_2035
+    name: "EPE — Plano Decenal de Expansão de Energia (PDE 2035)"
+    publisher: EPE
+    category: planning_policy
+    url: "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/plano-decenal-de-expansao-de-energia-2035"
+    provides: "Plano decenal: demanda, oferta, transmissão, premissas de cenário."
+    format: [pdf, xlsx]
+    access: open_download
+    update_frequency: "anual (ciclo)"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: medium
+    notes: "Base para cenários de capacidade, rede e sensibilidade de curtailment de médio prazo."
+
+  - id: epe_ben
+    name: "EPE — Balanço Energético Nacional (séries históricas)"
+    publisher: EPE
+    category: planning_policy
+    url: "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/balanco-energetico-nacional-ben-series-historicas-completas"
+    provides: "Balanços energéticos nacionais históricos, incluindo eletricidade."
+    format: [xlsx, csv, pdf]
+    access: open_download
+    update_frequency: "anual"
+    language: pt
+    tier: primary
+    relevance_credit: medium
+    relevance_curtailment: low
+
+  - id: epe_anuario
+    name: "EPE — Anuário Estatístico de Energia Elétrica"
+    publisher: EPE
+    category: planning_policy
+    url: "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/anuario-estatistico-de-energia-eletrica"
+    provides: "Compêndio estatístico anual: geração, consumo, infraestrutura."
+    format: [pdf, xlsx]
+    access: open_download
+    update_frequency: "anual"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: low
+
+  - id: epe_webmap
+    name: "EPE — WebMap (geoespacial / projetos)"
+    publisher: EPE
+    category: projects_tech
+    url: "https://gisepeprd2.epe.gov.br/WebMapEPE/"
+    provides: "Mapeamento geoespacial de projetos e infraestrutura de energia."
+    format: [dashboard]
+    access: scrape
+    language: pt
+    tier: primary
+    relevance_credit: medium
+    relevance_curtailment: medium
+
+  - id: epe_demanda
+    name: "EPE — Caderno de Demanda de Eletricidade"
+    publisher: EPE
+    category: planning_policy
+    url: "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/caderno-de-demanda-de-eletricidade"
+    provides: "Workbook/relatório de perspectiva de demanda."
+    format: [xlsx, pdf]
+    access: open_download
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: low
+
+  - id: mme_boletim
+    name: "MME — Boletim de Monitoramento do Sistema Elétrico"
+    publisher: MME
+    category: planning_policy
+    url: "https://www.gov.br/mme/pt-br/assuntos/secretarias/see/monitoramento-do-sistema-eletrico/boletim-de-monitoramento-do-sistema-eletrico"
+    provides: "Boletim mensal oficial de monitoramento do sistema elétrico (série desde 2009)."
+    format: [pdf]
+    access: open_download
+    update_frequency: "mensal"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: medium
+
+  - id: cnpe
+    name: "CNPE — Resoluções"
+    publisher: CNPE
+    category: planning_policy
+    url: "https://www.gov.br/mme/pt-br/assuntos/cnpe"
+    provides: "Decisões e resoluções do CNPE (leilões, segurança de suprimento, política setorial)."
+    format: [html, pdf]
+    access: scrape
+    update_frequency: "event-driven"
+    language: pt
+    tier: primary
+    relevance_credit: medium
+    relevance_curtailment: low
+
+  - id: ndc_brasil
+    name: "Brasil — NDC (compromissos climáticos)"
+    publisher: MMA
+    category: planning_policy
+    url: "https://www.gov.br/mma/pt-br/composicao/secex/cgclima/ndc"
+    provides: "Documentos da NDC e materiais de compromisso climático."
+    format: [html, pdf]
+    access: open_download
+    language: mixed
+    tier: primary
+    relevance_credit: medium
+    relevance_curtailment: low
+
+  - id: sbce
+    name: "SBCE — Sistema Brasileiro de Comércio de Emissões"
+    publisher: Ministério da Fazenda
+    category: planning_policy
+    url: "https://www.gov.br/fazenda/pt-br/assuntos/sustentabilidade/sistema-brasileiro-de-comercio-de-emissoes"
+    provides: "Página oficial do mercado de carbono brasileiro (ETS)."
+    format: [html, pdf]
+    access: scrape
+    language: pt
+    tier: primary
+    relevance_credit: medium
+    relevance_curtailment: low
+
+  # --- Financial / issuer / credit ---
+  - id: cvm_open_data
+    name: "CVM Dados Abertos (hub)"
+    publisher: CVM
+    category: financial_credit
+    url: "https://dados.cvm.gov.br/"
+    provides: "Portal oficial de documentos periódicos/eventuais de companhias e ofertas públicas."
+    format: [csv, zip, api]
+    access: api_ckan
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: low
+
+  - id: cvm_itr
+    name: "CVM — ITR (demonstrações trimestrais)"
+    publisher: CVM
+    category: financial_credit
+    url: "https://dados.cvm.gov.br/dataset/cia_aberta-doc-itr"
+    data_url: "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2026.zip"
+    provides: "Demonstrações financeiras trimestrais estruturadas (histórico desde 2011)."
+    format: [zip, csv]
+    access: api_ckan
+    update_frequency: "trimestral"
+    history_from: "2011"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: low
+    notes: "Nomeação de arquivo anual estável — amigável a pipeline."
+
+  - id: cvm_dfp
+    name: "CVM — DFP (demonstrações anuais)"
+    publisher: CVM
+    category: financial_credit
+    url: "https://dados.cvm.gov.br/dataset/cia_aberta-doc-dfp"
+    provides: "Demonstrações financeiras anuais padronizadas."
+    format: [zip, csv]
+    access: api_ckan
+    update_frequency: "anual"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: low
+
+  - id: cvm_fre
+    name: "CVM — FRE (formulário de referência)"
+    publisher: CVM
+    category: financial_credit
+    url: "https://dados.cvm.gov.br/dataset/cia_aberta-doc-fre"
+    provides: "Formulários de referência: negócio, risco, governança, dívida, projetos."
+    format: [zip, csv]
+    access: api_ckan
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: low
+    notes: "Especialmente valioso para estrutura de dívida, energia contratada e portfólio de projetos."
+
+  - id: cvm_ipe
+    name: "CVM — IPE (eventos relevantes / fatos)"
+    publisher: CVM
+    category: financial_credit
+    url: "https://dados.cvm.gov.br/dataset/cia_aberta-doc-ipe"
+    provides: "Documentos periódicos e eventuais, incluindo fatos relevantes."
+    format: [zip, txt]
+    access: api_ckan
+    update_frequency: "rolling (5 anos)"
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: low
+    notes: "Chave para vigilância de fato relevante."
+
+  - id: cvm_ofertas
+    name: "CVM — Ofertas Públicas"
+    publisher: CVM
+    category: financial_credit
+    url: "https://dados.cvm.gov.br/group/ofertas-publicas"
+    provides: "Dados de ofertas cobrindo debêntures e outros valores mobiliários."
+    format: [zip, ods]
+    access: api_ckan
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: low
+    notes: "Importante para rastrear emissão de dívida de infraestrutura."
+
+  - id: b3_listadas
+    name: "B3 — Empresas Listadas"
+    publisher: B3
+    category: financial_credit
+    url: "https://www.b3.com.br/pt_br/produtos-e-servicos/negociacao/renda-variavel/empresas-listadas.htm"
+    provides: "Páginas de companhias listadas: financeiros, fatos, comunicados."
+    format: [html]
+    access: scrape
+    update_frequency: "event-driven"
+    language: pt
+    tier: exchange
+    relevance_credit: high
+    relevance_curtailment: low
+    notes: "Secundário ao CVM para ingestão estruturada em massa."
+
+  - id: b3_fatos
+    name: "B3 — Fatos Relevantes por período"
+    publisher: B3
+    category: financial_credit
+    url: "https://www.b3.com.br/pt_br/produtos-e-servicos/negociacao/renda-variavel/acoes/consultas/informacoes-por-periodo/fatos-relevantes/"
+    provides: "Busca de fatos relevantes por intervalo de tempo."
+    format: [html]
+    access: scrape
+    update_frequency: "event-driven"
+    language: pt
+    tier: exchange
+    relevance_credit: high
+    relevance_curtailment: low
+
+  - id: anbima_data
+    name: "ANBIMA Data — debêntures / renda fixa"
+    publisher: ANBIMA
+    category: financial_credit
+    url: "https://data.anbima.com.br/"
+    provides: "Busca de debêntures, preços indicativos, datasets, analytics de títulos."
+    format: [html, api]
+    access: paid
+    update_frequency: "dia útil"
+    language: pt
+    tier: secondary
+    relevance_credit: high
+    relevance_curtailment: low
+    notes: "Melhor fonte prática de preço de debêntures; API completa (Feed) é comercial."
+
+  - id: debentures_snd
+    name: "Debentures.com.br (SND)"
+    publisher: SND
+    category: financial_credit
+    url: "https://www.debentures.com.br/"
+    provides: "Repositório de emissões e documentos de debêntures registradas no SND."
+    format: [html, pdf]
+    access: scrape
+    language: pt
+    tier: secondary
+    relevance_credit: high
+    relevance_curtailment: low
+
+  - id: fitch
+    name: "Fitch Ratings"
+    publisher: Fitch
+    category: financial_credit
+    url: "https://www.fitchratings.com/"
+    provides: "Ratings corporativos e de projeto, outlooks de utilities, relatórios por emissor."
+    format: [html, pdf]
+    access: login
+    update_frequency: "event-driven"
+    language: mixed
+    tier: secondary
+    relevance_credit: high
+    relevance_curtailment: medium
+    notes: "Fitch ligou premissas de preço BR, GSF e curtailment em comentários de 2026."
+
+  - id: sp_ratings
+    name: "S&P Global Ratings"
+    publisher: S&P
+    category: financial_credit
+    url: "https://www.spglobal.com/ratings/en"
+    provides: "Ratings e relatórios por emissor."
+    format: [html, pdf]
+    access: login
+    update_frequency: "event-driven"
+    language: mixed
+    tier: secondary
+    relevance_credit: high
+    relevance_curtailment: medium
+
+  - id: moodys
+    name: "Moody's"
+    publisher: Moody's
+    category: financial_credit
+    url: "https://www.moodys.com/"
+    provides: "Ratings e relatórios por emissor."
+    format: [html, pdf]
+    access: paid
+    update_frequency: "event-driven"
+    language: mixed
+    tier: secondary
+    relevance_credit: high
+    relevance_curtailment: medium
+
+  # --- Sector associations / projects ---
+  - id: abeeolica
+    name: "ABEEólica — Dados"
+    publisher: ABEEólica
+    category: projects_tech
+    url: "https://abeeolica.org.br/energia-eolica/dados-abeeolica/"
+    provides: "Boletins de geração eólica, relatórios anuais, inteligência de pipeline."
+    format: [pdf, html]
+    access: open_download
+    update_frequency: "anual/periódico"
+    language: pt
+    tier: secondary
+    relevance_credit: medium
+    relevance_curtailment: high
+    notes: "Benchmark contextual de stress e pipeline eólico."
+
+  - id: absolar
+    name: "ABSOLAR — Infográfico / Solar em Dados"
+    publisher: ABSOLAR
+    category: projects_tech
+    url: "https://www.absolar.org.br/mercado/infografico/"
+    provides: "Infográficos mensais e mapa georreferenciado solar (GD, usinas, subestações, linhas, irradiação)."
+    format: [html, dashboard]
+    access: scrape
+    update_frequency: "mensal"
+    language: pt
+    tier: secondary
+    relevance_credit: medium
+    relevance_curtailment: high
+    notes: "Contexto de crescimento da frota solar e geografia de congestionamento."
+
+  - id: abraceel
+    name: "Abraceel — mercado livre / varejo"
+    publisher: Abraceel
+    category: market_commercial
+    url: "https://abraceel.com.br/"
+    provides: "Releases e análises sobre migração ao mercado livre e abertura do varejo."
+    format: [html, pdf]
+    access: scrape
+    language: pt
+    tier: secondary
+    relevance_credit: medium
+    relevance_curtailment: low
+
+  - id: abradee
+    name: "Abradee — benchmarking de distribuição"
+    publisher: Abradee
+    category: projects_tech
+    url: "https://abradee.org.br/programa-de-benchmarking/"
+    provides: "Indicadores de benchmarking de distribuidoras e relatórios de sustentabilidade."
+    format: [html, pdf]
+    access: scrape
+    language: pt
+    tier: secondary
+    relevance_credit: medium
+    relevance_curtailment: low
+
+  # --- Hydrology / meteorology ---
+  - id: ana_open_data
+    name: "ANA — Dados Abertos / Hidroweb"
+    publisher: ANA
+    category: hydrology_meteo
+    url: "https://dadosabertos.ana.gov.br/"
+    provides: "Dados hidrometeorológicos e hidrológicos de estações, níveis, vazões, chuva."
+    format: [csv, api]
+    access: open_download
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: medium
+
+  - id: ana_hidrowebservice
+    name: "ANA — HidroWebService (API)"
+    publisher: ANA
+    category: hydrology_meteo
+    url: "https://www.ana.gov.br/hidrowebservice/manual"
+    provides: "API para acesso automatizado a dados hidrometeorológicos."
+    format: [api, pdf]
+    access: api_key
+    language: pt
+    tier: primary
+    relevance_credit: high
+    relevance_curtailment: medium
+    notes: "Registro por e-mail exigido; uma das poucas APIs oficiais não-CKAN."
+
+  - id: inmet
+    name: "INMET — dados históricos / estações"
+    publisher: INMET
+    category: hydrology_meteo
+    url: "https://portal.inmet.gov.br/dadoshistoricos"
+    provides: "Arquivos históricos anuais, base BDMEP, observações de estações automáticas."
+    format: [csv, zip, html]
+    access: open_download
+    update_frequency: "horário/anual"
+    history_from: "2000"
+    language: pt
+    tier: primary
+    relevance_credit: medium
+    relevance_curtailment: medium
+    notes: "Download-first, não API-first; complemento meteorológico para atribuição de geração eólico/solar."
+
+  - id: inmet_alertas
+    name: "INMET — alertas / mapa de estações"
+    publisher: INMET
+    category: hydrology_meteo
+    url: "https://alertas2.inmet.gov.br/"
+    provides: "Alertas meteorológicos e mapa dinâmico de estações."
+    format: [html, dashboard]
+    access: scrape
+    update_frequency: "horário/diário"
+    language: pt
+    tier: primary
+    relevance_credit: medium
+    relevance_curtailment: medium
+
+  - id: cptec_inpe
+    name: "CPTEC/INPE — previsões / clima"
+    publisher: INPE
+    category: hydrology_meteo
+    url: "https://www.cptec.inpe.br/"
+    provides: "Previsões de tempo e clima, outlooks ENSO e produtos meteorológicos."
+    format: [html, dashboard]
+    access: scrape
+    update_frequency: "diário/periódico"
+    language: pt
+    tier: primary
+    relevance_credit: medium
+    relevance_curtailment: medium
+
+  # --- News / specialized media ---
+  - id: canalenergia
+    name: "CanalEnergia"
+    publisher: CanalEnergia
+    category: news_media
+    url: "https://www.canalenergia.com.br/"
+    provides: "Cobertura ampla de geração, transmissão, distribuição, regulação e finanças."
+    format: [html]
+    access: scrape
+    update_frequency: "diário"
+    language: pt
+    tier: secondary
+    relevance_credit: high
+    relevance_curtailment: high
+    notes: "Bom para cobertura contínua de curtailment e expansão de rede."
+
+  - id: megawhat
+    name: "MegaWhat"
+    publisher: MegaWhat
+    category: news_media
+    url: "https://megawhat.energy/"
+    provides: "Cobertura de regulação, planejamento, estrutura de mercado, curtailment, reforma do mercado livre."
+    format: [html]
+    access: scrape
+    update_frequency: "diário"
+    language: pt
+    tier: secondary
+    relevance_credit: high
+    relevance_curtailment: high
+    notes: "Frequentemente à frente em detalhe regulatório."
+
+  - id: eixos
+    name: "eixos"
+    publisher: Agência eixos
+    category: news_media
+    url: "https://eixos.com.br/home-2/"
+    provides: "Cobertura de energia/política: eletricidade, transição, minerais, políticas públicas."
+    format: [html]
+    access: scrape
+    update_frequency: "diário"
+    language: pt
+    tier: secondary
+    relevance_credit: medium
+    relevance_curtailment: medium
+
+  - id: epbr
+    name: "epbr"
+    publisher: epbr
+    category: news_media
+    url: "https://epbr.com.br/"
+    provides: "Cobertura de política e negócios de energia, incluindo eletricidade."
+    format: [html]
+    access: scrape
+    update_frequency: "diário"
+    language: pt
+    tier: secondary
+    relevance_credit: medium
+    relevance_curtailment: medium
+

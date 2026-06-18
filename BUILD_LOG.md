@@ -49,7 +49,20 @@
 **Broken/Pending:** registry still missing the **rule layer** (ANEEL compensation), **settlement layer** (CCEE), **litigation overlay** (STJ/DOU), and remaining sector-wide sources — that's **Phase 1.2**. No data fetched yet (Phase 2). Skills/hooks are stubs only.
 **Next step:** Phase 1.2 (extend registry with rule/settlement/litigation + sector-wide), then Phase 2.1 (vertical slice: fetch one ONS constrained-off dataset) — note fetch needs network, which runs where egress is available.
 
+## 2026-06-17 — Phase 1.2: registry extended to sector-wide (81 sources)
+
+**What:** Extended `sources/registry.yml` from 15 → **81 sources**, completing the three-layer curtailment model and adding sector-wide coverage.
+- **Rule layer (ANEEL, 3):** 2026 PV criterion, Dec-2024 wind improvements, REN 1.073/2023 solar.
+- **Settlement layer (CCEE, 5):** wind definitive package + cronograma, solar definitive period, Lei 15.269/2025, contabilização.
+- **Litigation overlay (1):** STJ Jan-2025 suspension. Plus DOU search (legal_tracking).
+- **Sector-wide:** CCEE market/PLD/migration/auctions (10 market_commercial), ANEEL regulation/registry (open data, GD, tarifas, SIGET, leilões, BDGD, SAMP, fiscalização, reuniões, agenda), EPE/MME/policy (9 planning_policy incl. PDE 2035, BEN, anuário, boletim MME, CNPE, NDC, SBCE), financial/credit (13: CVM ITR/DFP/FRE/IPE/ofertas + hub, B3 x2, ANBIMA, debentures.com.br, Fitch/S&P/Moody's), associations (ABEEólica, ABSOLAR, Abraceel, Abradee), hydrology/meteo (ANA x2, INMET x2, CPTEC/INPE), news (CanalEnergia, MegaWhat, eixos, epbr).
+**Why:** Complete the sector-wide source backbone (PLAN Phase 1.2) so any module can be built from the registry.
+**Decisions:** compensation-specific ANEEL/CCEE/STJ entries are `category: curtailment` with `layer: rule|settlement|litigation` (so the validator's layer invariant covers them); general ANEEL/CCEE/CVM entries take their normal categories. Access tags: `api_ckan` for CKAN datasets, `scrape` for HTML monitoring pages, `open_download` for direct PDFs, `api_key` (ANA), `login`/`paid` for gated financial sources.
+**Works now:** `python pipeline/checks/validate_registry.py` → exit 0, **81 sources**. Breakdown — curtailment layers: physical 4 / rule 3 / settlement 5 / litigation 1; tiers: primary 66, secondary 13, exchange 2.
+**Broken/Pending:** no data fetched yet; fetch/transform/check code not written; skills/hooks still stubs.
+**Next step:** **Phase 2.1** — vertical slice: build the CKAN-first fetcher and pull ONE ONS constrained-off dataset (`ons_coff_eolica_usi`) into `raw/ons/` with provenance + manifest. Needs network (runs where egress is available).
+
 ---
 
 ### Current state
-**Phases 0.1, 0.2, 0.3, 1.1 complete.** Repo skeleton, per-folder context stubs, registry schema + validator, and a validated 15-source curtailment-first `sources/registry.yml` are in place (`validate_registry.py` exits 0). Next actionable step: **Phase 1.2** — add the ANEEL rule layer, CCEE settlement layer, STJ/DOU litigation overlay, and remaining sector-wide sources to the registry. Then **Phase 2** (vertical slice) begins the first network fetch.
+**Phases 0.1–1.2 complete.** `sources/registry.yml` is a validated 81-source sector-wide catalog with the full three-layer curtailment model (physical→rule→settlement + litigation). Next actionable step: **Phase 2.1 — the first network fetch** (one ONS constrained-off dataset, end-to-end), which begins the vertical slice. Phase 2 requires outbound network, so it runs where egress is available (e.g., your computer).
