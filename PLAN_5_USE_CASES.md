@@ -5,7 +5,7 @@
 
 ## Context
 
-This knowledge graph ingests 40+ source files across 5 domains — regulatory filings
+This knowledge graph ingests 38 source files across 5 domains — regulatory filings
 (ANEEL, ONS, CCEE), company credit profiles (Cemig, CPFL, Copel, Equatorial, Energisa,
 Neoenergia, Eletrobras), market dynamics (PLD, ACL/ACR, leilões), technology trends,
 and national energy policy (PNE, NDC, SBCE). The result is 220 nodes, 304 edges, and
@@ -15,7 +15,7 @@ and national energy policy (PNE, NDC, SBCE). The result is 220 nodes, 304 edges,
 The team manages a portfolio of debentures and project-finance positions across Brazilian
 electricity companies. The credit risk is structurally complex: a single ANEEL resolution
 can cascade through tariff methodology → company EBITDA → DSCR → covenant breach. Doing
-that cross-referencing manually across 40+ documents is slow, error-prone, and expensive.
+that cross-referencing manually across dozens of documents is slow, error-prone, and expensive.
 The knowledge graph compresses that into a graph query that runs in seconds.
 
 ---
